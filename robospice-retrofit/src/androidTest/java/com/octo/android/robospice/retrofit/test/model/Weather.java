@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Weather {
 
-    private List<Curren_weather> curren_weather;
-    private List<Forecast> forecast;
+    List<Curren_weather> curren_weather;
+    List<Forecast> forecast;
 
     public Weather() {
     }

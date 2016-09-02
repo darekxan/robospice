@@ -19,12 +19,12 @@ import java.util.concurrent.Future;
  */
 public class CachedSpiceRequest<RESULT> extends SpiceRequest<RESULT> {
 
-    private Object requestCacheKey;
-    private final long cacheDuration;
-    private final SpiceRequest<RESULT> spiceRequest;
-    private boolean isProcessable = true;
-    private boolean isAcceptingDirtyCache;
-    private boolean isOffline;
+    Object requestCacheKey;
+    final long cacheDuration;
+    final SpiceRequest<RESULT> spiceRequest;
+    boolean isProcessable = true;
+    boolean isAcceptingDirtyCache;
+    boolean isOffline;
 
     public CachedSpiceRequest(final SpiceRequest<RESULT> spiceRequest, final Object requestCacheKey, final long cacheDuration) {
         super(spiceRequest.getResultType());
@@ -118,12 +118,12 @@ public class CachedSpiceRequest<RESULT> extends SpiceRequest<RESULT> {
         return spiceRequest;
     }
     
-    /* package private */@Override
+    /* package */@Override
     void setStatus(final RequestStatus status) {
         spiceRequest.setStatus(status);
     }
 
-    /* package private */@Override
+    /* package */@Override
     RequestProgress getProgress() {
         return spiceRequest.getProgress();
     }

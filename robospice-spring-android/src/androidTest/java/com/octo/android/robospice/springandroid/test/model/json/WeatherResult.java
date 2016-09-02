@@ -1,9 +1,9 @@
 package com.octo.android.robospice.springandroid.test.model.json;
 
 public class WeatherResult {
-    private Weather weather;
+    Weather weather;
 
-    private int id = 1;
+    int id = 1;
 
     String string = "a";
 

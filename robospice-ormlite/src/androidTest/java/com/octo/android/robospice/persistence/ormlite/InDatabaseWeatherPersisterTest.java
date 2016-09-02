@@ -18,7 +18,7 @@ import com.octo.android.robospice.persistence.ObjectPersister;
 
 @SmallTest
 public class InDatabaseWeatherPersisterTest extends InstrumentationTestCase {
-    private ObjectPersister<Weather> dataPersistenceManager;
+    ObjectPersister<Weather> dataPersistenceManager;
     private static final CurrenWeather TEST_TEMP = new CurrenWeather();
     private static final CurrenWeather TEST_TEMP2 = new CurrenWeather();
     private static final int CACHE_KEY = 1;
@@ -171,7 +171,7 @@ public class InDatabaseWeatherPersisterTest extends InstrumentationTestCase {
         assertFalse(listWeatherResult.contains(weatherRequestStatus2));
     }
 
-    private Weather buildWeather(int id, CurrenWeather currenWeather) {
+    Weather buildWeather(int id, CurrenWeather currenWeather) {
         Weather weather = new Weather();
         weather.setId(id);
         List<CurrenWeather> currents = new ArrayList<CurrenWeather>();

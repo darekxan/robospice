@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class RequestListenerWithProgressStub<T> extends RequestListenerStub<T> implements RequestProgressListener {
 
-    private boolean isComplete;
+    boolean isComplete;
     protected ReentrantLock lockComplete = new ReentrantLock();
     protected Condition requestCompleteCondition = lockComplete.newCondition();
 

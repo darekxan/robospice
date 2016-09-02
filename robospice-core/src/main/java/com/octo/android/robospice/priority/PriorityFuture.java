@@ -11,7 +11,7 @@ import java.util.concurrent.FutureTask;
  */
 public class PriorityFuture<T> extends FutureTask<T> implements Comparable<PriorityFuture<T>> {
 
-    private int priority;
+    int priority;
 
     public PriorityFuture(Runnable other, int priority, final T result) {
         super(other, result);

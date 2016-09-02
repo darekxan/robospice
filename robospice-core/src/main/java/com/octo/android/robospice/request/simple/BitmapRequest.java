@@ -27,12 +27,12 @@ public class BitmapRequest extends SpiceRequest<Bitmap> implements IBitmapReques
 
     private static final int BUF_SIZE = 4096;
 
-    private String url;
-    private BitmapFactory.Options options;
-    private File cacheFile;
+    String url;
+    BitmapFactory.Options options;
+    File cacheFile;
 
-    private int height = -1;
-    private int width = -1;
+    int height = -1;
+    int width = -1;
 
     /**
      * Creates a BitmapRequest able to fetch a {@link Bitmap} from the network.
@@ -153,7 +153,7 @@ public class BitmapRequest extends SpiceRequest<Bitmap> implements IBitmapReques
         }
     }
 
-    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;

@@ -9,15 +9,15 @@ import com.j256.ormlite.field.ForeignCollectionField;
 public class Weather {
 
     @DatabaseField(generatedId = true)
-    private int id;
+    int id;
 
     @DatabaseField
-    private String emptyField;
+    String emptyField;
 
     @ForeignCollectionField(eager = false)
-    private Collection<CurrenWeather> listWeather;
+    Collection<CurrenWeather> listWeather;
     @ForeignCollectionField(eager = false)
-    private Collection<Forecast> listForecast;
+    Collection<Forecast> listForecast;
 
     public Weather() {
     }

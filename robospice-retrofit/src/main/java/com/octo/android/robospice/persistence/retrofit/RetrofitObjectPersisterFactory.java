@@ -15,7 +15,7 @@ public class RetrofitObjectPersisterFactory extends InFileObjectPersisterFactory
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private Converter converter;
+    Converter converter;
 
     // ----------------------------------
     // CONSTRUCTORS

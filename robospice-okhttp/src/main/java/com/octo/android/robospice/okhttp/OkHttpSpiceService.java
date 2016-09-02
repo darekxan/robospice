@@ -10,7 +10,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 public abstract class OkHttpSpiceService extends SpiceService {
 
-    private OkHttpClient okHttpClient;
+    OkHttpClient okHttpClient;
 
     @Override
     public void onCreate() {

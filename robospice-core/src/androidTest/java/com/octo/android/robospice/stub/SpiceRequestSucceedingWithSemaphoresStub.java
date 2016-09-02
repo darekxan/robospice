@@ -5,9 +5,9 @@ import java.util.concurrent.Semaphore;
 import roboguice.util.temp.Ln;
 
 public final class SpiceRequestSucceedingWithSemaphoresStub<T> extends SpiceRequestStub<T> {
-    private T returnedData;
-    private Semaphore requestStarted = new Semaphore(1);
-    private Semaphore allowRequestToFinish = new Semaphore(1);
+    T returnedData;
+    Semaphore requestStarted = new Semaphore(1);
+    Semaphore allowRequestToFinish = new Semaphore(1);
 
     public SpiceRequestSucceedingWithSemaphoresStub(Class<T> clazz, T returnedData) throws InterruptedException {
         super(clazz);

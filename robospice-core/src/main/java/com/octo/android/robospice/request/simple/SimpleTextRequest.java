@@ -13,7 +13,7 @@ import roboguice.util.temp.Ln;
 
 public class SimpleTextRequest extends SpiceRequest<String> {
 
-    private final String url;
+    final String url;
 
     public SimpleTextRequest(final String url) {
         super(String.class);

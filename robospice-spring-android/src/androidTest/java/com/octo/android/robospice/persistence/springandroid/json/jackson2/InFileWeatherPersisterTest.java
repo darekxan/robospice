@@ -22,7 +22,7 @@ public class InFileWeatherPersisterTest extends AndroidTestCase {
     private static final String TEST_TEMP2 = "30";
     private static final String FILE_NAME = "toto";
     private static final String FILE_NAME2 = "tutu";
-    private InFileObjectPersister<WeatherResult> dataPersistenceManager;
+    InFileObjectPersister<WeatherResult> dataPersistenceManager;
 
     @Override
     protected void setUp() throws Exception {
@@ -163,7 +163,7 @@ public class InFileWeatherPersisterTest extends AndroidTestCase {
         assertFalse(listWeatherResult.contains(weatherRequestStatus2));
     }
 
-    private WeatherResult buildWeather(String temp, String tempUnit) {
+    WeatherResult buildWeather(String temp, String tempUnit) {
         WeatherResult weatherRequestStatus = new WeatherResult();
         Weather weather = new Weather();
         List<CurrenWeather> currents = new ArrayList<CurrenWeather>();

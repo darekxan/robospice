@@ -19,8 +19,6 @@ android {
         versionName '1414'
 
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
-
-        consumerProguardFiles 'proguard.pro'
     }
 
     buildTypes {
@@ -38,8 +36,7 @@ android {
 dependencies {
     compile project(':robospice-core')
 
-    compile group: 'com.squareup.retrofit', name: 'retrofit', version: '1.6.1'
-    compile group: 'com.squareup.retrofit', name: 'converter-jackson', version: '1.6.1'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
 
     androidTestCompile 'com.google.mockwebserver:mockwebserver:20130706'
     androidTestCompile 'junit:junit:4.12'

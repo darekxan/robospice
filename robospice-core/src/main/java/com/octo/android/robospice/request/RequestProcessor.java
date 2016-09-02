@@ -25,11 +25,11 @@ public class RequestProcessor {
     // ATTRIBUTES
     // ============================================================================================
 
-    private final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToRequestListener = Collections.synchronizedMap(new LinkedHashMap<CachedSpiceRequest<?>, Set<RequestListener<?>>>());
-    private final RequestProgressManager requestProgressManager;
-    private final RequestRunner requestRunner;
-    private final CacheManager cacheManager;
-    private boolean isStopped;
+    final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToRequestListener = Collections.synchronizedMap(new LinkedHashMap<CachedSpiceRequest<?>, Set<RequestListener<?>>>());
+    final RequestProgressManager requestProgressManager;
+    final RequestRunner requestRunner;
+    final CacheManager cacheManager;
+    boolean isStopped;
 
     // ============================================================================================
     // CONSTRUCTOR

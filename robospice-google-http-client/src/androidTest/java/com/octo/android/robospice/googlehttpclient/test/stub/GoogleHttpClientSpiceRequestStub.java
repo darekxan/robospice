@@ -8,8 +8,8 @@ import com.octo.android.robospice.googlehttpclient.test.model.Weather;
 import com.octo.android.robospice.request.googlehttpclient.GoogleHttpClientSpiceRequest;
 
 public class GoogleHttpClientSpiceRequestStub extends GoogleHttpClientSpiceRequest<Weather> {
-    private ReentrantLock reentrantLock = new ReentrantLock();
-    private Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
+    ReentrantLock reentrantLock = new ReentrantLock();
+    Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
 
     public GoogleHttpClientSpiceRequestStub(Class<Weather> clazz) {
         super(clazz);

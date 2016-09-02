@@ -21,19 +21,19 @@ public class DefaultRetryPolicy implements RetryPolicy {
     public static final float DEFAULT_BACKOFF_MULT = 1f;
 
     /** The number of retry attempts. */
-    private int retryCount = DEFAULT_RETRY_COUNT;
+    int retryCount = DEFAULT_RETRY_COUNT;
 
     /**
      * The delay to wait before next retry attempt. Will be multiplied by
      * {@link #backOffMultiplier} between every retry attempt.
      */
-    private long delayBeforeRetry = DEFAULT_DELAY_BEFORE_RETRY;
+    long delayBeforeRetry = DEFAULT_DELAY_BEFORE_RETRY;
 
     /**
      * The backoff multiplier. Will be multiplied by {@link #delayBeforeRetry}
      * between every retry attempt.
      */
-    private float backOffMultiplier = DEFAULT_BACKOFF_MULT;
+    float backOffMultiplier = DEFAULT_BACKOFF_MULT;
 
     // ----------------------------------
     // CONSTRUCTORS

@@ -12,7 +12,7 @@ import com.squareup.okhttp.OkHttpClient;
  */
 public abstract class OkHttpSpiceRequest<T> extends SpiceRequest<T> {
 
-    private OkHttpClient okHttpClient;
+    OkHttpClient okHttpClient;
 
     public OkHttpSpiceRequest(Class<T> clazz) {
         super(clazz);

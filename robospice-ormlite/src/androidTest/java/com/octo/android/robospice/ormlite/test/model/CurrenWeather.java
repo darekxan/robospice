@@ -7,25 +7,25 @@ import com.j256.ormlite.table.DatabaseTable;
 public class CurrenWeather {
 
     @DatabaseField(generatedId = true)
-    private int id;
+    int id;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "weather_id")
-    private Weather weather;
+    Weather weather;
 
     @DatabaseField
-    private String humidity;
+    String humidity;
     @DatabaseField
-    private String pressure;
+    String pressure;
     @DatabaseField
-    private String temp;
+    String temp;
     @DatabaseField
-    private String temp_unit;
+    String temp_unit;
     @DatabaseField
-    private String weather_code;
+    String weather_code;
     @DatabaseField
-    private String weather_text;
+    String weather_text;
 
-    private Wind wind;
+    Wind wind;
 
     public String getHumidity() {
         return this.humidity;

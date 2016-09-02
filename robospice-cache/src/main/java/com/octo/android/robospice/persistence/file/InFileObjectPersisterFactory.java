@@ -23,9 +23,9 @@ public abstract class InFileObjectPersisterFactory extends ObjectPersisterFactor
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private File cacheFolder;
-    private String cachePrefix;
-    private KeySanitizer keySanitizer;
+    File cacheFolder;
+    String cachePrefix;
+    KeySanitizer keySanitizer;
 
     // ----------------------------------
     // CONSTRUCTORS

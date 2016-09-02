@@ -13,8 +13,8 @@ import com.octo.android.robospice.request.SpiceRequest;
  */
 public abstract class RetrofitSpiceRequest<T, R> extends SpiceRequest<T> {
 
-    private Class<R> retrofitedInterfaceClass;
-    private R service;
+    Class<R> retrofitedInterfaceClass;
+    R service;
 
     public RetrofitSpiceRequest(Class<T> clazz, Class<R> retrofitedInterfaceClass) {
         super(clazz);

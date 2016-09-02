@@ -6,11 +6,11 @@ import com.google.api.client.util.Key;
 
 public class Day {
     @Key
-    private String weather_code;
+    String weather_code;
     @Key
-    private String weather_text;
+    String weather_text;
     @Key
-    private List<Wind> wind;
+    List<Wind> wind;
 
     public String getWeather_code() {
         return this.weather_code;

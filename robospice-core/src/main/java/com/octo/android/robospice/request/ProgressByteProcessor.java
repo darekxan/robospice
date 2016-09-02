@@ -8,10 +8,10 @@ import java.io.OutputStream;
  */
 public class ProgressByteProcessor {
 
-    private final OutputStream bos;
-    private long progress;
-    private final long total;
-    private SpiceRequest<?> spiceRequest;
+    final OutputStream bos;
+    long progress;
+    final long total;
+    SpiceRequest<?> spiceRequest;
 
     public ProgressByteProcessor(SpiceRequest<?> spiceRequest, final OutputStream bos, final long total) {
         this.bos = bos;

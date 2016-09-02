@@ -9,8 +9,8 @@ import android.widget.AbsListView.OnScrollListener;
 public class SpiceListViewTest extends InstrumentationTestCase {
 
     private static final int SCROLL_Y_AMOUNT_IN_PIXELS = 100;
-    private SpiceListView spiceListView;
-    private OnScrollListener mockOnScrollListener;
+    SpiceListView spiceListView;
+    OnScrollListener mockOnScrollListener;
 
     @Override
     protected void setUp() throws Exception {

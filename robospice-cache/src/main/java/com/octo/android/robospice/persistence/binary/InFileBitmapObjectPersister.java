@@ -25,9 +25,9 @@ public class InFileBitmapObjectPersister extends InFileObjectPersister<Bitmap> {
 
     private static final int DEFAULT_QUALITY = 100;
 
-    private Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.PNG;
-    private BitmapFactory.Options decodingOptions = null;
-    private int quality = DEFAULT_QUALITY;
+    Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.PNG;
+    BitmapFactory.Options decodingOptions = null;
+    int quality = DEFAULT_QUALITY;
 
     public InFileBitmapObjectPersister(Application application) throws CacheCreationException {
         super(application, Bitmap.class);

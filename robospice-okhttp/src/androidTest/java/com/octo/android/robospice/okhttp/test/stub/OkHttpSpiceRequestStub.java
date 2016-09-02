@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.octo.android.robospice.request.okhttp.OkHttpSpiceRequest;
 
 public class OkHttpSpiceRequestStub extends OkHttpSpiceRequest<String> {
-    private ReentrantLock reentrantLock = new ReentrantLock();
-    private Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
+    ReentrantLock reentrantLock = new ReentrantLock();
+    Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
 
     public OkHttpSpiceRequestStub() {
         super(String.class);

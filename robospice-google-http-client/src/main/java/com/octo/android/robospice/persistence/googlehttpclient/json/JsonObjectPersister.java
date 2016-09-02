@@ -23,7 +23,7 @@ public final class JsonObjectPersister<T> extends InFileObjectPersister<T> {
     // ATTRIBUTES
     // ============================================================================================
 
-    private final JsonFactory jsonFactory;
+    final JsonFactory jsonFactory;
 
     // ============================================================================================
     // CONSTRUCTOR
@@ -91,7 +91,7 @@ public final class JsonObjectPersister<T> extends InFileObjectPersister<T> {
         return data;
     }
 
-    private void saveData(T data, Object cacheKey) throws IOException, CacheSavingException {
+    void saveData(T data, Object cacheKey) throws IOException, CacheSavingException {
         // transform the content in json to store it in the cache
         JsonGenerator jsonGenerator = jsonFactory.createJsonGenerator(new FileWriter(getCacheFile(cacheKey)));
         jsonGenerator.serialize(data);

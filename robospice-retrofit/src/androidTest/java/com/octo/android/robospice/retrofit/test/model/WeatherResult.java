@@ -1,8 +1,8 @@
 package com.octo.android.robospice.retrofit.test.model;
 
 public class WeatherResult {
-    private Weather weather;
-    private int id = 1;
+    Weather weather;
+    int id = 1;
 
     public Weather getWeather() {
         return this.weather;

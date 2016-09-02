@@ -8,7 +8,7 @@ import com.octo.android.robospice.request.SpiceRequest;
 
 public abstract class SpringAndroidSpiceRequest<RESULT> extends SpiceRequest<RESULT> {
 
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     public SpringAndroidSpiceRequest(Class<RESULT> clazz) {
         super(clazz);

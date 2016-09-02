@@ -15,7 +15,7 @@ public class SpringAndroidSpiceServiceTest extends ServiceTestCase<SpringAndroid
 
     private static final int REQUEST_COMPLETION_TIMEOUT = 1000;
     private static final long SMALL_THREAD_SLEEP = 50;
-    private SpiceManager spiceManager;
+    SpiceManager spiceManager;
 
     public SpringAndroidSpiceServiceTest() {
         super(SpringAndroidTestService.class);

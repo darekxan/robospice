@@ -19,7 +19,7 @@ public final class GsonObjectPersister<T> extends SpringAndroidObjectPersister<T
     // ATTRIBUTES
     // ============================================================================================
 
-    private final Gson gson;
+    final Gson gson;
 
     // ============================================================================================
     // CONSTRUCTOR

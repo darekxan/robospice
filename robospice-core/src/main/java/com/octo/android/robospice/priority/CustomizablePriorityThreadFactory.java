@@ -11,7 +11,7 @@ public class CustomizablePriorityThreadFactory implements ThreadFactory {
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private int threadPriority = Thread.MIN_PRIORITY;
+    int threadPriority = Thread.MIN_PRIORITY;
 
     // ----------------------------------
     // CONSTRUCTORS

@@ -33,15 +33,15 @@ public class SpiceArrayAdapterTest extends AndroidTestCase {
 
     private static final int ADAPTER_UPDATE_TIME_OUT = 3000;
 
-    private File cacheFile;
+    File cacheFile;
 
-    private MockWebServer mockWebServer;
+    MockWebServer mockWebServer;
 
-    private SpiceArrayAdapterUnderTest adapter;
-    private BitmapSpiceManager spiceManager;
-    private DataUnderTest data1;
-    private DataUnderTest data2;
-    private ArrayList<DataUnderTest> data;
+    SpiceArrayAdapterUnderTest adapter;
+    BitmapSpiceManager spiceManager;
+    DataUnderTest data1;
+    DataUnderTest data2;
+    ArrayList<DataUnderTest> data;
 
     @Override
     protected void setUp() throws Exception {
@@ -119,9 +119,9 @@ public class SpiceArrayAdapterTest extends AndroidTestCase {
 
     }
 
-    private class DataUnderTest {
-        private String foo;
-        private String imageUrl;
+    class DataUnderTest {
+        String foo;
+        String imageUrl;
 
         public String getFoo() {
             return foo;
@@ -141,11 +141,11 @@ public class SpiceArrayAdapterTest extends AndroidTestCase {
 
     }
 
-    private class SpiceArrayAdapterUnderTest extends SpiceArrayAdapter<DataUnderTest> {
+    class SpiceArrayAdapterUnderTest extends SpiceArrayAdapter<DataUnderTest> {
 
-        private ReentrantLock reentrantLock = new ReentrantLock();
-        private Condition loadBitmapHasBeenCalledCondition = reentrantLock.newCondition();
-        private boolean loadBitmapHasBeenCalled = false;
+        ReentrantLock reentrantLock = new ReentrantLock();
+        Condition loadBitmapHasBeenCalledCondition = reentrantLock.newCondition();
+        boolean loadBitmapHasBeenCalled = false;
 
         public SpiceArrayAdapterUnderTest(Context context, BitmapSpiceManager spiceManagerBinary, List<DataUnderTest> data) {
             super(context, spiceManagerBinary, data);
@@ -191,11 +191,11 @@ public class SpiceArrayAdapterTest extends AndroidTestCase {
         }
     }
 
-    private class ListItemViewStub extends RelativeLayout implements SpiceListItemView<DataUnderTest> {
+    class ListItemViewStub extends RelativeLayout implements SpiceListItemView<DataUnderTest> {
 
-        private DataUnderTest dataUnderTest;
-        private TextView userNameTextView;
-        private ImageView thumbImageView;
+        DataUnderTest dataUnderTest;
+        TextView userNameTextView;
+        ImageView thumbImageView;
 
         public ListItemViewStub(Context context) {
             super(context);
@@ -231,7 +231,7 @@ public class SpiceArrayAdapterTest extends AndroidTestCase {
     /**
      * Used for testing only so that we can add a custom Service that works offline for testing.
      */
-    private class BitmapSpiceManagerUnderTest extends BitmapSpiceManager {
+    class BitmapSpiceManagerUnderTest extends BitmapSpiceManager {
 
         public BitmapSpiceManagerUnderTest() {
             super(TestBigBinarySpiceService.class);

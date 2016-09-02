@@ -31,17 +31,17 @@ public class LruCache<K, V> {
     private static final int MAX_PERCENT = 100;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
-    private final LinkedHashMap<K, V> map;
+    final LinkedHashMap<K, V> map;
 
     /** Size of this cache in units. Not necessarily the number of elements. */
-    private int size;
-    private int maxSize;
+    int size;
+    int maxSize;
 
-    private int putCount;
-    private int createCount;
-    private int evictionCount;
-    private int hitCount;
-    private int missCount;
+    int putCount;
+    int createCount;
+    int evictionCount;
+    int hitCount;
+    int missCount;
 
     /**
      * @param maxSize
@@ -233,7 +233,7 @@ public class LruCache<K, V> {
         return null;
     }
 
-    private int safeSizeOf(K key, V value) {
+    int safeSizeOf(K key, V value) {
         int result = sizeOf(key, value);
         if (result < 0) {
             throw new IllegalStateException("Negative size: " + key + "=" + value);

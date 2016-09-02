@@ -33,7 +33,7 @@ public class DefaultNetworkStateChecker implements NetworkStateChecker {
         checkHasPermission(context, Manifest.permission.INTERNET);
     }
 
-    private boolean checkHasPermission(final Context context, final String permissionName) {
+    boolean checkHasPermission(final Context context, final String permissionName) {
         final boolean hasPermission = context.getPackageManager().checkPermission(permissionName, context.getPackageName()) == PackageManager.PERMISSION_GRANTED;
         if (!hasPermission) {
             throw new SecurityException("Application doesn\'t declare <uses-permission android:name=\"" + permissionName + "\" />");

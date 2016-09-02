@@ -4,15 +4,15 @@ import org.simpleframework.xml.Element;
 
 public class Day {
 
-    private int id;
+    int id;
 
     @Element
-    private String weather_code;
+    String weather_code;
     @Element
-    private String weather_text;
+    String weather_text;
 
     @Element
-    private Wind wind;
+    Wind wind;
 
     public String getWeather_code() {
         return this.weather_code;

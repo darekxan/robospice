@@ -34,9 +34,9 @@ public interface SpiceServiceListener {
     // ----------------------------------
     
     class RequestProcessingContext {
-        private Thread executionThread;
-        private RequestProgress requestProgress;
-        private Set<RequestListener<?>> requestListeners;
+        Thread executionThread;
+        RequestProgress requestProgress;
+        Set<RequestListener<?>> requestListeners;
 
         public void setExecutionThread(Thread executionThread) {
             this.executionThread = executionThread;

@@ -113,7 +113,7 @@ public class RoboSpiceDatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    private <T> void clearTable(Class<T> clazz) throws SQLException {
+    <T> void clearTable(Class<T> clazz) throws SQLException {
         for (Field field : clazz.getDeclaredFields()) {
             ForeignCollectionField annotation = field.getAnnotation(ForeignCollectionField.class);
             if (annotation != null) {

@@ -2,8 +2,8 @@ package com.octo.android.robospice.request.listener;
 
 public class RequestProgress {
 
-    private RequestStatus status;
-    private float progress;
+    RequestStatus status;
+    float progress;
 
     public RequestProgress(final RequestStatus status) {
         this(status, 0);

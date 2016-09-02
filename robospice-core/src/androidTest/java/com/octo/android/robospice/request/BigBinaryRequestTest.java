@@ -21,8 +21,8 @@ import com.octo.android.robospice.utils.IOUtils;
 @LargeTest
 public class BigBinaryRequestTest extends AndroidTestCase {
 
-    private MockWebServer mockWebServer;
-    private File cacheFile;
+    MockWebServer mockWebServer;
+    File cacheFile;
 
     @Override
     protected void setUp() throws Exception {

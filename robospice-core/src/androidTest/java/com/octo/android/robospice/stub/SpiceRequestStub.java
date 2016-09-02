@@ -21,9 +21,9 @@ public abstract class SpiceRequestStub<T> extends SpiceRequest<T> {
     /** Whether {@link #loadDataFromNetwork()} has been called or not. */
     protected boolean isLoadDataFromNetworkCalled = false;
     /** Synchronizes access to {@link #requestFinishedCondition}. */
-    private ReentrantLock lock = new ReentrantLock();
+    ReentrantLock lock = new ReentrantLock();
     /** Indicates whether or not request can be considered as finished. */
-    private Condition requestFinishedCondition = lock.newCondition();
+    Condition requestFinishedCondition = lock.newCondition();
 
     public SpiceRequestStub(Class<T> clazz) {
         super(clazz);

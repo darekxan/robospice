@@ -39,15 +39,16 @@ public final class Ln {
      * pass.
      */
     private static final BaseConfig CONFIG = new BaseConfig();
+    private static final Object[] EMPTY = new Object[0];
 
     /**
      * print is initially set to Print(), then replaced by guice during static
      * injection pass. This allows overriding where the log message is delivered
      * to.
      */
-    private static Print print = new Print();
+    static Print print = new Print();
 
-    private Ln() {
+    Ln() {
     }
 
     public static int v(Throwable t) {
@@ -76,6 +77,10 @@ public final class Ln {
 
     public static int d(Throwable t) {
         return CONFIG.minimumLogLevel <= Log.DEBUG ? print.println(Log.DEBUG, Log.getStackTraceString(t)) : 0;
+    }
+
+    public static int d(Object s1) {
+        return d(s1, EMPTY);
     }
 
     public static int d(Object s1, Object... args) {

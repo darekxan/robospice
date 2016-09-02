@@ -8,8 +8,8 @@ import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import java.util.Date;
 
 public class GetDateOfDataInCacheCommand extends SpiceManager.SpiceManagerCommand<Date> {
-    private Class<?> clazz;
-    private Object cacheKey;
+    Class<?> clazz;
+    Object cacheKey;
 
     public GetDateOfDataInCacheCommand(SpiceManager spiceManager, Class<?> clazz, Object cacheKey) {
         super(spiceManager);

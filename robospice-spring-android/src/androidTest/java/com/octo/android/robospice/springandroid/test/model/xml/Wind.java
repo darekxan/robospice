@@ -4,16 +4,16 @@ import org.simpleframework.xml.Element;
 
 public class Wind {
 
-    private int id;
+    int id;
 
     @Element(required = false)
-    private String dir;
+    String dir;
     @Element(required = false)
-    private String dir_degree;
+    String dir_degree;
     @Element(required = false)
-    private String speed;
+    String speed;
     @Element(required = false)
-    private String wind_unit;
+    String wind_unit;
 
     public String getDir() {
         return this.dir;

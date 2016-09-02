@@ -4,8 +4,8 @@ import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.SpiceService;
 
 public class RemoveDataFromCacheCommand extends SpiceManager.SpiceManagerCommand<Void> {
-    private final Class<?> clazz;
-    private Object cacheKey;
+    final Class<?> clazz;
+    Object cacheKey;
 
     public <T> RemoveDataFromCacheCommand(SpiceManager spiceManager, Class<T> clazz, Object cacheKey) {
         super(spiceManager);

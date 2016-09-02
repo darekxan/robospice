@@ -24,7 +24,7 @@ public class DefaultRequestListenerNotifier implements RequestListenerNotifier {
     // ============================================================================================
     // ATTRIBUTES
     // ============================================================================================
-    private final Handler handlerResponse;
+    final Handler handlerResponse;
 
     // ============================================================================================
     // CONSTRUCTOR
@@ -33,7 +33,7 @@ public class DefaultRequestListenerNotifier implements RequestListenerNotifier {
         handlerResponse = new Handler(Looper.getMainLooper());
     }
 
-    private void post(final Runnable r, final Object token) {
+    void post(final Runnable r, final Object token) {
         handlerResponse.postAtTime(r, token, SystemClock.uptimeMillis());
     }
 
@@ -86,8 +86,8 @@ public class DefaultRequestListenerNotifier implements RequestListenerNotifier {
     // INNER CLASSES
     // ============================================================================================
 
-    private static class NotFoundRunnable implements Runnable {
-        private final Set<RequestListener<?>> listeners;
+    static class NotFoundRunnable implements Runnable {
+        final Set<RequestListener<?>> listeners;
 
         public NotFoundRunnable(final Set<RequestListener<?>> listeners) {
             this.listeners = listeners;
@@ -112,9 +112,9 @@ public class DefaultRequestListenerNotifier implements RequestListenerNotifier {
         }
     }
     
-    private static class ProgressRunnable implements Runnable {
-        private final RequestProgress progress;
-        private final Set<RequestListener<?>> listeners;
+    static class ProgressRunnable implements Runnable {
+        final RequestProgress progress;
+        final Set<RequestListener<?>> listeners;
 
         public ProgressRunnable(final Set<RequestListener<?>> listeners, final RequestProgress progress) {
             this.progress = progress;
@@ -140,11 +140,11 @@ public class DefaultRequestListenerNotifier implements RequestListenerNotifier {
         }
     }
 
-    private static class ResultRunnable<T> implements Runnable {
+    static class ResultRunnable<T> implements Runnable {
 
-        private SpiceException spiceException;
-        private T result;
-        private final Set<RequestListener<?>> listeners;
+        SpiceException spiceException;
+        T result;
+        final Set<RequestListener<?>> listeners;
 
         public ResultRunnable(final Set<RequestListener<?>> listeners, final T result) {
             this.result = result;

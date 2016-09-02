@@ -7,20 +7,20 @@ import org.simpleframework.xml.ElementList;
 
 public class Forecast {
 
-    private int id;
+    int id;
 
     @Element
-    private String date;
+    String date;
     @ElementList(inline = true)
-    private List<Day> listDay;
+    List<Day> listDay;
     @Element
-    private String day_max_temp;
+    String day_max_temp;
     @ElementList(inline = true)
-    private List<Night> listNight;
+    List<Night> listNight;
     @Element
-    private String night_min_temp;
+    String night_min_temp;
     @Element
-    private String temp_unit;
+    String temp_unit;
 
     public String getDate() {
         return this.date;

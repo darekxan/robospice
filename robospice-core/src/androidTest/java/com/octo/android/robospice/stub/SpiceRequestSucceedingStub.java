@@ -3,8 +3,8 @@ package com.octo.android.robospice.stub;
 import roboguice.util.temp.Ln;
 
 public final class SpiceRequestSucceedingStub<T> extends SpiceRequestStub<T> {
-    private T returnedData;
-    private long sleepTimeBeforeAnswering = 0;
+    T returnedData;
+    long sleepTimeBeforeAnswering = 0;
 
     public SpiceRequestSucceedingStub(Class<T> clazz, T returnedData) {
         this(clazz, returnedData, 0);

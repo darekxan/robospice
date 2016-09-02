@@ -5,7 +5,7 @@ import com.octo.android.robospice.SpiceManager.SpiceManagerCommand;
 import com.octo.android.robospice.SpiceService;
 
 public class SetFailOnCacheErrorCommand extends SpiceManagerCommand<Void> {
-    private final boolean failOnCacheError;
+    final boolean failOnCacheError;
 
     public SetFailOnCacheErrorCommand(SpiceManager spiceManager, boolean failOnCacheError) {
         super(spiceManager);

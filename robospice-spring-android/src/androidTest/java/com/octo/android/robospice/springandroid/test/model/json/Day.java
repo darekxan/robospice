@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Day {
-    private String weather_code;
-    private String weather_text;
-    private List<Wind> wind;
+    String weather_code;
+    String weather_text;
+    List<Wind> wind;
 
     public String getWeather_code() {
         return this.weather_code;

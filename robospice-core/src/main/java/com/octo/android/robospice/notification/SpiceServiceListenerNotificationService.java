@@ -30,12 +30,12 @@ public abstract class SpiceServiceListenerNotificationService extends Service {
     public static final String BUNDLE_KEY_SERVICE_CLASS = "BUNDLE_KEY_SERVICE_CLASS";
     public static final String BUNDLE_KEY_FOREGROUND = "BUNDLE_KEY_FOREGROUND";
 
-    private int notificationId = DEFAULT_ROBOSPICE_NOTIFICATION_ID;
-    private boolean foreground;
-    private Class<? extends SpiceService> spiceServiceClass;
+    int notificationId = DEFAULT_ROBOSPICE_NOTIFICATION_ID;
+    boolean foreground;
+    Class<? extends SpiceService> spiceServiceClass;
 
-    private NotificationManager notificationManager;
-    private SpiceManager spiceManager;
+    NotificationManager notificationManager;
+    SpiceManager spiceManager;
 
     public static Intent createIntent(final Context context, final Class<? extends SpiceServiceListenerNotificationService> clazz, final Class<? extends SpiceService> spiceServiceClass,
         final int notificationId, final boolean foreground) {
@@ -114,8 +114,8 @@ public abstract class SpiceServiceListenerNotificationService extends Service {
     // ----------------------------------
 
     public static class SpiceNotification {
-        private int id;
-        private Notification notification;
+        int id;
+        Notification notification;
 
         public SpiceNotification(int id, Notification notification) {
             this.id = id;

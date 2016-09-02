@@ -19,7 +19,7 @@ import com.octo.android.robospice.persistence.exception.CacheSavingException;
  */
 public class DoubleInMemoryPersisterStub extends ObjectPersister<Double> {
 
-    private HashMap<Object, Double> map = new HashMap<Object, Double>();
+    HashMap<Object, Double> map = new HashMap<Object, Double>();
 
     public DoubleInMemoryPersisterStub(Application application) {
         super(application, Double.class);

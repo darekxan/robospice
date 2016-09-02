@@ -16,11 +16,11 @@ import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;
 
 public abstract class RetrofitSpiceService extends SpiceService {
 
-    private Map<Class<?>, Object> retrofitInterfaceToServiceMap = new HashMap<Class<?>, Object>();
-    private RestAdapter.Builder builder;
-    private RestAdapter restAdapter;
+    Map<Class<?>, Object> retrofitInterfaceToServiceMap = new HashMap<Class<?>, Object>();
+    RestAdapter.Builder builder;
+    RestAdapter restAdapter;
     protected List<Class<?>> retrofitInterfaceList = new ArrayList<Class<?>>();
-    private Converter mConverter;
+    Converter mConverter;
 
     @Override
     public void onCreate() {

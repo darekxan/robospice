@@ -33,10 +33,10 @@ import roboguice.util.temp.Ln;
 
 public class InDatabaseObjectPersister<T, ID> extends ObjectPersister<T> {
 
-    private RoboSpiceDatabaseHelper databaseHelper;
-    private RuntimeExceptionDao<T, ID> dao;
-    private Map<Class<?>, Uri> mapHandledClassesToNotificationUri;
-    private Map<Class<?>, DatabaseTableConfig> mTableConfigs = new HashMap<Class<?>, DatabaseTableConfig>();
+    RoboSpiceDatabaseHelper databaseHelper;
+    RuntimeExceptionDao<T, ID> dao;
+    Map<Class<?>, Uri> mapHandledClassesToNotificationUri;
+    Map<Class<?>, DatabaseTableConfig> mTableConfigs = new HashMap<Class<?>, DatabaseTableConfig>();
 
 
     /**

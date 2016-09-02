@@ -15,7 +15,7 @@ public class CacheManagerTest extends AndroidTestCase {
     private static final String TEST_PERSISTED_STRING = "TEST";
     private static final Integer TEST_PERSISTED_INTEGER = Integer.valueOf(0);
 
-    private CacheManager cacheManager;
+    CacheManager cacheManager;
 
     @Override
     protected void setUp() throws Exception {
@@ -126,7 +126,7 @@ public class CacheManagerTest extends AndroidTestCase {
     // ----------------------------------
     // CLASSES UNDER TEST
     // ----------------------------------
-    private class MockStringPersistenceManager extends ObjectPersister<String> {
+    class MockStringPersistenceManager extends ObjectPersister<String> {
 
         public MockStringPersistenceManager() {
             super(null, String.class);
@@ -179,7 +179,7 @@ public class CacheManagerTest extends AndroidTestCase {
         }
     }
 
-    private class MockIntegerPersistenceManager extends ObjectPersister<Integer> {
+    class MockIntegerPersistenceManager extends ObjectPersister<Integer> {
 
         public MockIntegerPersistenceManager() {
             super(null, Integer.class);

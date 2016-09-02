@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Wind {
-    private String dir;
-    private String speed;
-    private String wind_unit;
+    String dir;
+    String speed;
+    String wind_unit;
 
     public String getDir() {
         return this.dir;

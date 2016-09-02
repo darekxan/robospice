@@ -40,7 +40,7 @@ public class InFileObjectPersisterWithCustomFolderTest extends AbstractInFileObj
     // ============================================================================================
     // CLASS UNDER TEST
     // ============================================================================================
-    private final class InFileObjectPersisterWithCustomFolderUnderTest extends InFileObjectPersisterUnderTest {
+    final class InFileObjectPersisterWithCustomFolderUnderTest extends InFileObjectPersisterUnderTest {
         InFileObjectPersisterWithCustomFolderUnderTest(Application application) throws CacheCreationException {
             super(application);
             setCacheFolder(new File(application.getCacheDir(), TEST_CACHE_FOLDER));

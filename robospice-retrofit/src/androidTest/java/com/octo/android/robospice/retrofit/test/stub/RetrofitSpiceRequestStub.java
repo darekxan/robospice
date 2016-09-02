@@ -8,8 +8,8 @@ import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;
 import com.octo.android.robospice.retrofit.test.model.WeatherResult;
 
 public class RetrofitSpiceRequestStub extends RetrofitSpiceRequest<WeatherResult, FakeWeatherService> {
-    private ReentrantLock reentrantLock = new ReentrantLock();
-    private Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
+    ReentrantLock reentrantLock = new ReentrantLock();
+    Condition loadDataFromNetworkHasBeenExecuted = reentrantLock.newCondition();
 
     public RetrofitSpiceRequestStub(Class<WeatherResult> clazz) {
         super(clazz, FakeWeatherService.class);

@@ -1,9 +1,9 @@
 package com.octo.android.robospice.retrofit.test.model;
 
 public class Wind {
-    private String dir;
-    private String speed;
-    private String wind_unit;
+    String dir;
+    String speed;
+    String wind_unit;
 
     public String getDir() {
         return this.dir;

@@ -18,7 +18,7 @@ import com.octo.android.robospice.request.springandroid.SpringAndroidSpiceReques
  */
 public abstract class SpringAndroidSpiceService extends SpiceService {
 
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     @Override
     public void onCreate() {

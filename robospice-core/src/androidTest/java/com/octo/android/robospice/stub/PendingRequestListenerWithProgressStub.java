@@ -4,7 +4,7 @@ import com.octo.android.robospice.request.listener.PendingRequestListener;
 
 public class PendingRequestListenerWithProgressStub<T> extends RequestListenerWithProgressStub<T> implements PendingRequestListener<T> {
 
-    private boolean isRequestNotFound = false;
+    boolean isRequestNotFound = false;
 
     @Override
     public void onRequestNotFound() {

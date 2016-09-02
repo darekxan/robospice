@@ -5,11 +5,11 @@ import com.j256.ormlite.field.DatabaseField;
 public class Wind {
 
     @DatabaseField(generatedId = true)
-    private int id;
-    private String dir;
-    private String dir_degree;
-    private String speed;
-    private String wind_unit;
+    int id;
+    String dir;
+    String dir_degree;
+    String speed;
+    String wind_unit;
 
     public String getDir() {
         return this.dir;

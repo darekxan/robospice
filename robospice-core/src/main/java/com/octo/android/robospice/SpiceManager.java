@@ -1,5 +1,32 @@
 package com.octo.android.robospice;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
 import com.octo.android.robospice.SpiceService.SpiceServiceBinder;
 import com.octo.android.robospice.command.AddSpiceServiceListenerCommand;
 import com.octo.android.robospice.command.GetAllCacheKeysCommand;
@@ -24,33 +51,6 @@ import com.octo.android.robospice.request.listener.PendingRequestListener;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.octo.android.robospice.request.listener.SpiceServiceAdapter;
 import com.octo.android.robospice.request.listener.SpiceServiceListener;
-
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 import roboguice.util.temp.Ln;
 
@@ -95,21 +95,21 @@ public class SpiceManager implements Runnable {
     // ============================================================================================
 
     /** The class of the {@link SpiceService} to bind to. */
-    private final Class<? extends SpiceService> spiceServiceClass;
+    final Class<? extends SpiceService> spiceServiceClass;
 
     /** A reference on the {@link SpiceService} obtained by local binding. */
-    private SpiceService spiceService;
+    SpiceService spiceService;
     /** {@link SpiceService} binder. */
-    private SpiceServiceConnection spiceServiceConnection = new SpiceServiceConnection();
+    SpiceServiceConnection spiceServiceConnection = new SpiceServiceConnection();
 
     /** The contextWeakReference used to bind to the service from. */
-    private WeakReference<Context> contextWeakReference;
+    WeakReference<Context> contextWeakReference;
 
     /**
      * Whether or not {@link SpiceManager} is started. Must be volatile to
      * ensure multi-thread consistency.
      */
-    private volatile boolean isStopped = true;
+    volatile boolean isStopped = true;
 
     /** The queue of requests to be sent to the service. */
     protected final BlockingQueue<CachedSpiceRequest<?>> requestQueue = new PriorityBlockingQueue<CachedSpiceRequest<?>>();
@@ -119,7 +119,7 @@ public class SpiceManager implements Runnable {
      * All iterations must be synchronized. This is an identity list as we want
      * to keep every request.
      */
-    private final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToLaunchToRequestListener = Collections
+    final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToLaunchToRequestListener = Collections
         .synchronizedMap(new IdentityHashMap<CachedSpiceRequest<?>, Set<RequestListener<?>>>());
 
     /**
@@ -127,44 +127,44 @@ public class SpiceManager implements Runnable {
      * All iterations must be synchronized. This is *NOT* an identity list as we
      * want to take aggregation into account.
      */
-    private final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapPendingRequestToRequestListener = Collections.synchronizedMap(new HashMap<CachedSpiceRequest<?>, Set<RequestListener<?>>>());
+    final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapPendingRequestToRequestListener = Collections.synchronizedMap(new HashMap<CachedSpiceRequest<?>, Set<RequestListener<?>>>());
 
     /** Will execute internal commands of the SpiceManager. */
-    private ExecutorService executorService;
+    ExecutorService executorService;
 
     /**
      * Lock used to synchronize binding to / unbinding from the
      * {@link SpiceService}.
      */
-    private final ReentrantLock lockAcquireService = new ReentrantLock();
+    final ReentrantLock lockAcquireService = new ReentrantLock();
     /** A monitor to ensure service is bound before accessing it. */
-    private final Condition conditionServiceBound = lockAcquireService.newCondition();
+    final Condition conditionServiceBound = lockAcquireService.newCondition();
     /** A monitor to ensure service is unbound. */
-    private final Condition conditionServiceUnbound = lockAcquireService.newCondition();
+    final Condition conditionServiceUnbound = lockAcquireService.newCondition();
 
     /**
      * Lock used to synchronize transmission of requests to the
      * {@link SpiceService}.
      */
-    private final ReentrantLock lockSendRequestsToService = new ReentrantLock();
+    final ReentrantLock lockSendRequestsToService = new ReentrantLock();
 
     /** Thread running runnable code. */
     protected Thread runner;
 
     /** Reacts to service processing of requests. */
-    private final PendingRequestHandlerSpiceServiceListener removerSpiceServiceListener = new PendingRequestHandlerSpiceServiceListener();
+    final PendingRequestHandlerSpiceServiceListener removerSpiceServiceListener = new PendingRequestHandlerSpiceServiceListener();
 
     /**
      * Whether or not we are unbinding (to prevent unbinding twice. Must be
      * volatile to ensure multi-thread consistency.
      */
-    private volatile boolean isUnbinding = false;
+    volatile boolean isUnbinding = false;
 
     /**
      * Use to give a distinct name to each instance SpiceManager Threads, used
      * to send request to the service.
      */
-    private int spiceManagerThreadIndex;
+    int spiceManagerThreadIndex;
 
     // ============================================================================================
     // THREAD BEHAVIOR
@@ -238,7 +238,7 @@ public class SpiceManager implements Runnable {
         return mapPendingRequestToRequestListener.size();
     }
 
-    private Context getContextReference() {
+    Context getContextReference() {
         return contextWeakReference.get();
     }
 
@@ -275,7 +275,7 @@ public class SpiceManager implements Runnable {
         }
     }
 
-    private void sendRequestToService(final CachedSpiceRequest<?> spiceRequest) {
+    void sendRequestToService(final CachedSpiceRequest<?> spiceRequest) {
         lockSendRequestsToService.lock();
         try {
             if (spiceRequest != null && spiceService != null) {
@@ -690,7 +690,7 @@ public class SpiceManager implements Runnable {
      *         list of requests to be launched. If false, the request was
      *         already passed to the service.
      */
-    private boolean removeListenersOfCachedRequestToLaunch(final SpiceRequest<?> request) {
+    boolean removeListenersOfCachedRequestToLaunch(final SpiceRequest<?> request) {
         synchronized (mapRequestToLaunchToRequestListener) {
             for (final CachedSpiceRequest<?> cachedSpiceRequest : mapRequestToLaunchToRequestListener.keySet()) {
                 if (match(cachedSpiceRequest, request)) {
@@ -711,7 +711,7 @@ public class SpiceManager implements Runnable {
      * @param request
      *            the request for which listeners must be unregistered.
      */
-    private void removeListenersOfPendingCachedRequest(final SpiceRequest<?> request) throws InterruptedException {
+    void removeListenersOfPendingCachedRequest(final SpiceRequest<?> request) throws InterruptedException {
         synchronized (mapPendingRequestToRequestListener) {
             for (final CachedSpiceRequest<?> cachedSpiceRequest : mapPendingRequestToRequestListener.keySet()) {
                 if (match(cachedSpiceRequest, request)) {
@@ -780,7 +780,7 @@ public class SpiceManager implements Runnable {
      * @throws InterruptedException
      *             in case service binding fails.
      */
-    private void removeListenersOfAllPendingCachedRequests() throws InterruptedException {
+    void removeListenersOfAllPendingCachedRequests() throws InterruptedException {
         synchronized (mapPendingRequestToRequestListener) {
             if (!mapPendingRequestToRequestListener.isEmpty()) {
                 for (final CachedSpiceRequest<?> cachedSpiceRequest : mapPendingRequestToRequestListener.keySet()) {
@@ -806,7 +806,7 @@ public class SpiceManager implements Runnable {
      *            the request that we wish to remove notification for.
      * @return true if {@link CachedSpiceRequest} matches contentRequest.
      */
-    private boolean match(final CachedSpiceRequest<?> cachedSpiceRequest, final SpiceRequest<?> spiceRequest) {
+    boolean match(final CachedSpiceRequest<?> cachedSpiceRequest, final SpiceRequest<?> spiceRequest) {
         if (spiceRequest instanceof CachedSpiceRequest) {
             return spiceRequest == cachedSpiceRequest;
         } else {
@@ -839,7 +839,7 @@ public class SpiceManager implements Runnable {
         });
     }
 
-    private void cancelAllRequestsInternal() {
+    void cancelAllRequestsInternal() {
         lockSendRequestsToService.lock();
         try {
             // cancel each request that to be sent to service, and
@@ -1012,7 +1012,7 @@ public class SpiceManager implements Runnable {
         executeCommand(new SetFailOnCacheErrorCommand(this, failOnCacheError));
     }
 
-    private <T> void addRequestListenerToListOfRequestListeners(final CachedSpiceRequest<T> cachedSpiceRequest, final RequestListener<T> requestListener) {
+    <T> void addRequestListenerToListOfRequestListeners(final CachedSpiceRequest<T> cachedSpiceRequest, final RequestListener<T> requestListener) {
         synchronized (mapRequestToLaunchToRequestListener) {
             Set<RequestListener<?>> listeners = mapRequestToLaunchToRequestListener.get(cachedSpiceRequest);
             if (listeners == null) {
@@ -1116,7 +1116,7 @@ public class SpiceManager implements Runnable {
     /**
      * Called when a request has been processed by the {@link SpiceService}.
      */
-    private class PendingRequestHandlerSpiceServiceListener extends SpiceServiceAdapter {
+    class PendingRequestHandlerSpiceServiceListener extends SpiceServiceAdapter {
         @Override
         public void onRequestAdded(CachedSpiceRequest<?> cachedSpiceRequest, RequestProcessingContext requestProcessingContext) {
             Set<RequestListener<?>> listeners = mapRequestToLaunchToRequestListener.remove(cachedSpiceRequest);
@@ -1160,7 +1160,7 @@ public class SpiceManager implements Runnable {
         return spiceService != null;
     }
 
-    private boolean tryToStartService() {
+    boolean tryToStartService() {
         boolean success = false;
 
         // start the service it is not started yet.
@@ -1175,7 +1175,7 @@ public class SpiceManager implements Runnable {
         return success;
     }
 
-    private void bindToService() {
+    void bindToService() {
         Context context = getContextReference();
         if (context == null || requestQueue.isEmpty() && isStopped) {
             // fix issue 40. Thx Shussu
@@ -1209,7 +1209,7 @@ public class SpiceManager implements Runnable {
         }
     }
 
-    private void unbindFromService() {
+    void unbindFromService() {
         Context context = getContextReference();
         if (context == null) {
             return;
@@ -1281,7 +1281,7 @@ public class SpiceManager implements Runnable {
         return executorService.submit(spiceManagerCommand);
     }
 
-    private void checkServiceIsProperlyDeclaredInAndroidManifest(final Context context) {
+    void checkServiceIsProperlyDeclaredInAndroidManifest(final Context context) {
         final Intent intentCheck = new Intent(context, spiceServiceClass);
         if (context.getPackageManager().queryIntentServices(intentCheck, 0).isEmpty()) {
             shouldStop();
@@ -1289,7 +1289,7 @@ public class SpiceManager implements Runnable {
         }
     }
 
-    private void dumpMap(final StringBuilder stringBuilder, final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> map) {
+    void dumpMap(final StringBuilder stringBuilder, final Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> map) {
         synchronized (map) {
             stringBuilder.append(" request count= ");
             stringBuilder.append(mapRequestToLaunchToRequestListener.keySet().size());
@@ -1318,8 +1318,8 @@ public class SpiceManager implements Runnable {
     // ----------------------------------
     public abstract static class SpiceManagerCommand<T> implements Callable<T> {
         protected SpiceManager spiceManager;
-        private boolean successFull;
-        private Exception exception;
+        boolean successFull;
+        Exception exception;
 
         public SpiceManagerCommand(SpiceManager spiceManager) {
             this.spiceManager = spiceManager;

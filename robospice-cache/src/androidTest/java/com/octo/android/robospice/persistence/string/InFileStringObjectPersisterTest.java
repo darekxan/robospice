@@ -21,7 +21,7 @@ public class InFileStringObjectPersisterTest extends AndroidTestCase {
     private static final String TEST_DATA = "foo";
     private static final String TEST_CACHE_KEY = "TEST_CACHE_KEY";
 
-    private InFileStringObjectPersister inFileStringObjectPersister;
+    InFileStringObjectPersister inFileStringObjectPersister;
 
     @Override
     protected void setUp() throws Exception {

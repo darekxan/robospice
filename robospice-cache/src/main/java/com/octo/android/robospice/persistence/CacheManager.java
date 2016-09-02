@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import roboguice.util.temp.Ln;
-
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
+
+import roboguice.util.temp.Ln;
 
 /**
  * An entity responsible for loading/saving data from/to cache. It implements a
@@ -34,8 +34,8 @@ import com.octo.android.robospice.persistence.exception.CacheSavingException;
 public class CacheManager implements ICacheManager {
 
     /** The Chain of Responsibility list of all {@link Persister}. */
-    private Collection<Persister> listPersister = new ArrayList<Persister>();
-    private Map<ObjectPersisterFactory, List<ObjectPersister<?>>> mapFactoryToPersister = new HashMap<ObjectPersisterFactory, List<ObjectPersister<?>>>();
+    final Collection<Persister> listPersister = new ArrayList<Persister>();
+    final Map<ObjectPersisterFactory, List<ObjectPersister<?>>> mapFactoryToPersister = new HashMap<ObjectPersisterFactory, List<ObjectPersister<?>>>();
 
     /** {@inheritDoc} */
     @Override

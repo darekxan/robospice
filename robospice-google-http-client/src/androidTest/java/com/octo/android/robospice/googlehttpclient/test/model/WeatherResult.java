@@ -4,10 +4,10 @@ import com.google.api.client.util.Key;
 
 public class WeatherResult {
     @Key
-    private Weather weather;
+    Weather weather;
 
     @Key
-    private int id = 1;
+    int id = 1;
 
     public Weather getWeather() {
         return this.weather;

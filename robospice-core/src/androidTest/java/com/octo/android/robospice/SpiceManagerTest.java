@@ -45,7 +45,7 @@ public class SpiceManagerTest extends AndroidTestCase {
     private static final long SPICE_MANAGER_WAIT_TIMEOUT = 700;
     private static final long SMALL_THREAD_SLEEP = 50;
 
-    private SpiceManagerUnderTest spiceManager;
+    SpiceManagerUnderTest spiceManager;
 
     @Override
     protected void setUp() throws Exception {
@@ -64,7 +64,7 @@ public class SpiceManagerTest extends AndroidTestCase {
         super.tearDown();
     }
 
-    private void waitForSpiceManagerShutdown(SpiceManagerUnderTest spiceManager) throws InterruptedException {
+    void waitForSpiceManagerShutdown(SpiceManagerUnderTest spiceManager) throws InterruptedException {
         if (spiceManager != null && spiceManager.isStarted()) {
             spiceManager.cancelAllRequests();
             spiceManager.removeAllDataFromCache();
@@ -829,10 +829,10 @@ public class SpiceManagerTest extends AndroidTestCase {
      * http://stackoverflow.com/questions/
      * 2596493/junit-assert-in-thread-throws-exception/13712829#13712829
      */
-    private final class SpiceManagerUnderTest extends SpiceManager {
-        private Exception ex;
+    final class SpiceManagerUnderTest extends SpiceManager {
+        Exception ex;
 
-        private SpiceManagerUnderTest(Class<? extends SpiceService> spiceServiceClass) {
+        SpiceManagerUnderTest(Class<? extends SpiceService> spiceServiceClass) {
             super(spiceServiceClass);
         }
 
@@ -845,7 +845,7 @@ public class SpiceManagerTest extends AndroidTestCase {
             }
         }
 
-        private CachedSpiceRequest<?> getNextRequest() {
+        CachedSpiceRequest<?> getNextRequest() {
             return requestQueue.peek();
         }
 

@@ -29,8 +29,8 @@ public class BitmapRequestTest extends AndroidTestCase {
     private static final int TEST_BITMAP_WIDTH = 36;
     private static final int TEST_BITMAP_REDUCED_WIDTH = 18;
     private static final int TEST_BITMAP_REDUCED_HEIGHT = 18;
-    private MockWebServer mockWebServer;
-    private File cacheFile;
+    MockWebServer mockWebServer;
+    File cacheFile;
 
     @Override
     protected void setUp() throws Exception {

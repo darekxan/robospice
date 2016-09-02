@@ -60,13 +60,13 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
     /**
      * List of event listeners to get notified of network fetching allowed changes.
      */
-    private List<NetworkFetchingAuthorizationStateChangeAdapter> networkFetchingAuthorizationStateChangeListenerList = Collections
+    List<NetworkFetchingAuthorizationStateChangeAdapter> networkFetchingAuthorizationStateChangeListenerList = Collections
             .synchronizedList(new ArrayList<NetworkFetchingAuthorizationStateChangeAdapter>());
     /**
      * Contains all images that have been added recently to the list. They will be animated when
      * first displayed.
      */
-    private Set<Object> freshDrawableSet = new HashSet<Object>();
+    Set<Object> freshDrawableSet = new HashSet<Object>();
     /** The default drawable to display during image loading from the network. */
     protected Drawable defaultDrawable;
 
@@ -98,7 +98,7 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         this.defaultDrawable = defaultDrawable;
     }
 
-    /* package-private */final void setNetworkFetchingAllowed(final boolean isNetworkFetchingAllowed) {
+    /* package-*/final void setNetworkFetchingAllowed(final boolean isNetworkFetchingAllowed) {
         boolean changed = isNetworkFetchingAllowed != this.isNetworkFetchingAllowed;
         this.isNetworkFetchingAllowed = isNetworkFetchingAllowed;
         if (isNetworkFetchingAllowed && changed) {
@@ -162,11 +162,11 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
     // --- PRIVATE API
     // ----------------------------
 
-    private void addSpiceListItemView(final SpiceListItemView<T> spiceListItemView) {
+    void addSpiceListItemView(final SpiceListItemView<T> spiceListItemView) {
         this.networkFetchingAuthorizationStateChangeListenerList.add(new NetworkFetchingAuthorizationStateChangeAdapter(spiceListItemView));
     }
 
-    private boolean registered(final SpiceListItemView<T> view) {
+    boolean registered(final SpiceListItemView<T> view) {
         for (NetworkFetchingAuthorizationStateChangeAdapter listener : networkFetchingAuthorizationStateChangeListenerList) {
             if (listener.getView() == view) {
                 return true;
@@ -175,7 +175,7 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         return false;
     }
 
-    private void fireOnNetworkFetchingAllowedChange() {
+    void fireOnNetworkFetchingAllowedChange() {
         synchronized (networkFetchingAuthorizationStateChangeListenerList) {
             for (NetworkFetchingAuthorizationStateChangeAdapter networkFetchingAuthorizationStateChangeListener : networkFetchingAuthorizationStateChangeListenerList) {
                 Ln.d("calling state change listener");
@@ -184,7 +184,7 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         }
     }
 
-    private void initialize(final Context context, final SpiceManager spiceManagerBinary) {
+    void initialize(final Context context, final SpiceManager spiceManagerBinary) {
         this.spiceManagerBinary = spiceManagerBinary;
         defaultDrawable = context.getResources().getDrawable(android.R.drawable.picture_frame);
     }
@@ -195,10 +195,10 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
 
     protected class ImageRequestListener implements RequestListener<Bitmap> {
 
-        private SpiceListItemView<T> spiceListItemView;
-        private T data;
-        private ImageView thumbImageView;
-        private String imageFileName;
+        SpiceListItemView<T> spiceListItemView;
+        T data;
+        ImageView thumbImageView;
+        String imageFileName;
 
         public ImageRequestListener(final T data, final SpiceListItemView<T> spiceListItemView, final int imageIndex, final String imageFileName) {
             this.data = data;
@@ -241,7 +241,7 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         }
     }
 
-    private boolean cancelPotentialWork(final String fileName, final ImageView imageView) {
+    boolean cancelPotentialWork(final String fileName, final ImageView imageView) {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
 
         if (bitmapWorkerTask != null) {
@@ -276,11 +276,11 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
     // ----------------------------------
     protected class ThumbnailAsynTask extends AsyncTask<Object, Void, Boolean> {
 
-        private T data;
-        private SpiceListItemView<T> spiceListItemView;
-        private String tempThumbnailImageFileName = "";
-        private IBitmapRequest bitmapRequest;
-        private int imageIndex;
+        T data;
+        SpiceListItemView<T> spiceListItemView;
+        String tempThumbnailImageFileName = "";
+        IBitmapRequest bitmapRequest;
+        int imageIndex;
 
         public ThumbnailAsynTask(final IBitmapRequest request) {
             this.bitmapRequest = request;
@@ -320,11 +320,11 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         }
     }
 
-    private class BitmapWorkerTask extends AsyncTask<String, Void, Drawable> {
+    class BitmapWorkerTask extends AsyncTask<String, Void, Drawable> {
 
-        private final WeakReference<ImageView> imageViewReference;
+        final WeakReference<ImageView> imageViewReference;
         String fileName = "";
-        private T data;
+        T data;
 
         public BitmapWorkerTask(final ImageView imageView, final T data) {
             // Use a WeakReference to ensure the ImageView can be garbage
@@ -366,9 +366,9 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
 
     }
 
-    private class NetworkFetchingAuthorizationStateChangeAdapter {
+    class NetworkFetchingAuthorizationStateChangeAdapter {
 
-        private WeakReference<SpiceListItemView<T>> weakReferenceSpiceListItemView;
+        WeakReference<SpiceListItemView<T>> weakReferenceSpiceListItemView;
 
         public NetworkFetchingAuthorizationStateChangeAdapter(final SpiceListItemView<T> spiceListItemView) {
             this.weakReferenceSpiceListItemView = new WeakReference<SpiceListItemView<T>>(spiceListItemView);
@@ -389,8 +389,8 @@ public abstract class BaseSpiceArrayAdapter<T> extends ArrayAdapter<T> {
         }
     }
 
-    private class AsyncDrawable extends BitmapDrawable {
-        private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
+    class AsyncDrawable extends BitmapDrawable {
+        final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
 
         public AsyncDrawable(final Resources res, final BitmapWorkerTask bitmapWorkerTask) {
             super(res);

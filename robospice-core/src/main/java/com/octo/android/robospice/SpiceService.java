@@ -56,38 +56,38 @@ public abstract class SpiceService extends Service {
 
     // http://stackoverflow.com/a/13359680/693752
     /** JUNIT - this is for testing purposes only */
-    private static boolean isJUnit = false;
+    static boolean isJUnit = false;
 
     // ----------------------------------
     // CONSTANTS
     // ----------------------------------
-    protected static final int DEFAULT_NOTIFICATION_ID = 42;
+    private static final int DEFAULT_NOTIFICATION_ID = 42;
 
-    protected static final int DEFAULT_THREAD_COUNT = 1;
-    protected static final int DEFAULT_THREAD_PRIORITY = Thread.MIN_PRIORITY;
+    private static final int DEFAULT_THREAD_COUNT = 1;
+    private static final int DEFAULT_THREAD_PRIORITY = Thread.MIN_PRIORITY;
     /** Default in TimeUnit.NANOSECONDS implies core threads are not disposed when idle.*/
-    protected static final int DEFAULT_THREAD_KEEP_ALIVE_TIME = 0;
+    private static final int DEFAULT_THREAD_KEEP_ALIVE_TIME = 0;
 
-    private static final boolean DEFAULT_FAIL_ON_CACHE_ERROR = false;
+    static final boolean DEFAULT_FAIL_ON_CACHE_ERROR = false;
 
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private SpiceServiceBinder mSpiceServiceBinder;
+    SpiceServiceBinder mSpiceServiceBinder;
 
     /** Responsible for processing requests. */
-    private RequestProcessor requestProcessor;
+    RequestProcessor requestProcessor;
 
-    private int currentPendingRequestCount = 0;
+    int currentPendingRequestCount = 0;
 
-    private boolean isBound;
+    boolean isBound;
 
-    private Notification notification;
+    Notification notification;
 
     /** Responsible for persisting data. */
-    private CacheManager cacheManager;
+    CacheManager cacheManager;
 
-    private boolean isCreated;
+    boolean isCreated;
 
     // ----------------------------------
     // CONSTRUCTOR
@@ -143,7 +143,7 @@ public abstract class SpiceService extends Service {
         return new DefaultRequestRunner(getApplicationContext(), cacheManager, executorService, requestProgressManager, networkStateChecker);
     }
 
-    private RequestProgressManager createRequestProgressManager(final RequestProcessorListener requestProcessorListener, final RequestListenerNotifier progressReporter,
+    RequestProgressManager createRequestProgressManager(final RequestProcessorListener requestProcessorListener, final RequestListenerNotifier progressReporter,
         final SpiceServiceListenerNotifier spiceServiceListenerNotifier) {
         return new RequestProgressManager(requestProcessorListener, progressReporter, spiceServiceListenerNotifier);
     }
@@ -467,7 +467,7 @@ public abstract class SpiceService extends Service {
     }
 
     public static class SpiceServiceBinder extends Binder {
-        private final SpiceService spiceService;
+        final SpiceService spiceService;
 
         public SpiceServiceBinder(final SpiceService spiceService) {
             this.spiceService = spiceService;
@@ -490,14 +490,14 @@ public abstract class SpiceService extends Service {
         requestProcessor.removeSpiceServiceListener(spiceServiceListener);
     }
 
-    private void stopIfNotBoundAndHasNoPendingRequests() {
+    void stopIfNotBoundAndHasNoPendingRequests() {
         Ln.v("Pending requests : " + currentPendingRequestCount);
         if (currentPendingRequestCount == 0 && !isBound) {
             stopSelf();
         }
     }
 
-    private void showNotificationIfNotBoundAndHasPendingRequestsOtherwiseHideNotification() {
+    void showNotificationIfNotBoundAndHasPendingRequestsOtherwiseHideNotification() {
         // http://stackoverflow.com/a/13359680/693752
         if (notification == null || isJUnit) {
             return;
@@ -512,7 +512,7 @@ public abstract class SpiceService extends Service {
         }
     }
 
-    private void startForeground(final Notification notification) {
+    void startForeground(final Notification notification) {
         try {
             final Method setForegroundMethod = Service.class.getMethod("startForeground", int.class, Notification.class);
             setForegroundMethod.invoke(this, getNotificationId(), notification);

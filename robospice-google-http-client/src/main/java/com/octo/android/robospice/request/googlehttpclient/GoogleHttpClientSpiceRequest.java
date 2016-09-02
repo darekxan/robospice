@@ -5,7 +5,7 @@ import com.octo.android.robospice.request.SpiceRequest;
 
 public abstract class GoogleHttpClientSpiceRequest<RESULT> extends SpiceRequest<RESULT> {
 
-    private HttpRequestFactory httpRequestFactory;
+    HttpRequestFactory httpRequestFactory;
 
     public GoogleHttpClientSpiceRequest(Class<RESULT> clazz) {
         super(clazz);

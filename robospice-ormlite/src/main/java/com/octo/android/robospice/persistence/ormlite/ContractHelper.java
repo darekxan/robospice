@@ -14,8 +14,8 @@ import com.tojc.ormlite.android.annotation.AdditionalAnnotation.Contract;
  * @author SNI
  */
 public final class ContractHelper {
-    private ContractHelper() {
-        // utility class private constructor
+    ContractHelper() {
+        // utility class constructor
     }
 
     public static Map<Class<?>, Uri> getContractClasses(List<Class<?>> classList) {

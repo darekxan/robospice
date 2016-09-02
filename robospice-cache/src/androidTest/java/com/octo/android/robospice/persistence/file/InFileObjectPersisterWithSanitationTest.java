@@ -39,7 +39,7 @@ public class InFileObjectPersisterWithSanitationTest extends AbstractInFileObjec
     // ============================================================================================
     // CLASS UNDER TEST
     // ============================================================================================
-    private final class InFileObjectPersisterWithSanitationUnderTest extends InFileObjectPersisterUnderTest {
+    final class InFileObjectPersisterWithSanitationUnderTest extends InFileObjectPersisterUnderTest {
         InFileObjectPersisterWithSanitationUnderTest(Application application) throws CacheCreationException {
             super(application);
             setKeySanitizer(new DefaultKeySanitizer());

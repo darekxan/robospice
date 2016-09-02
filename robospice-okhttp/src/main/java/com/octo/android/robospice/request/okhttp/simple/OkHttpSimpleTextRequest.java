@@ -13,7 +13,7 @@ import roboguice.util.temp.Ln;
 
 public class OkHttpSimpleTextRequest extends OkHttpSpiceRequest<String> {
 
-    private final String url;
+    final String url;
 
     public OkHttpSimpleTextRequest(final String url) {
         super(String.class);

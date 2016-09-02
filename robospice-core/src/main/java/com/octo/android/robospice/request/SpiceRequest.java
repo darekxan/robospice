@@ -26,16 +26,16 @@ public abstract class SpiceRequest<RESULT> implements Comparable<SpiceRequest<RE
     public static final int PRIORITY_NORMAL = 50;
     public static final int PRIORITY_LOW = 100;
 
-    private final Class<RESULT> resultType;
-    private boolean isCanceled = false;
-    private Future<?> future;
-    private RequestProgressListener requestProgressListener;
-    private boolean isAggregatable = true;
-    private int priority = PRIORITY_NORMAL;
-    private RequestProgress progress = new RequestProgress(RequestStatus.PENDING);
-    private RequestCancellationListener requestCancellationListener;
+    final Class<RESULT> resultType;
+    boolean isCanceled = false;
+    Future<?> future;
+    RequestProgressListener requestProgressListener;
+    boolean isAggregatable = true;
+    int priority = PRIORITY_NORMAL;
+    RequestProgress progress = new RequestProgress(RequestStatus.PENDING);
+    RequestCancellationListener requestCancellationListener;
 
-    private RetryPolicy retryPolicy = new DefaultRetryPolicy();
+    RetryPolicy retryPolicy = new DefaultRetryPolicy();
 
     public SpiceRequest(final Class<RESULT> clazz) {
         checkInnerClassDeclarationToPreventMemoryLeak();
@@ -77,7 +77,7 @@ public abstract class SpiceRequest<RESULT> implements Comparable<SpiceRequest<RE
         return priority;
     }
 
-    private void checkInnerClassDeclarationToPreventMemoryLeak() {
+    void checkInnerClassDeclarationToPreventMemoryLeak() {
         // thanx to Cyril Mottier for this contribution
         // prevent devs from creating memory leaks by using inner
         // classes of contexts
@@ -104,12 +104,12 @@ public abstract class SpiceRequest<RESULT> implements Comparable<SpiceRequest<RE
         }
     }
 
-    /* package private */void setStatus(final RequestStatus status) {
+    /* package */void setStatus(final RequestStatus status) {
         this.progress = new RequestProgress(status);
         publishProgress();
     }
 
-    /* package private */RequestProgress getProgress() {
+    /* package */RequestProgress getProgress() {
         return progress;
     }
 

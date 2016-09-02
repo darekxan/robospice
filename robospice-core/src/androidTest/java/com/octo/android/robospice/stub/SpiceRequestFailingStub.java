@@ -4,7 +4,7 @@ import roboguice.util.temp.Ln;
 
 public final class SpiceRequestFailingStub<T> extends SpiceRequestStub<T> {
 
-    private long sleepTimeBeforeAnswering = 0;
+    long sleepTimeBeforeAnswering = 0;
 
     public SpiceRequestFailingStub(Class<T> clazz) {
         super(clazz);

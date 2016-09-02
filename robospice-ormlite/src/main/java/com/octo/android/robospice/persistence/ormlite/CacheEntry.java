@@ -7,28 +7,28 @@ import com.j256.ormlite.table.DatabaseTable;
 public class CacheEntry {
 
     @DatabaseField(id = true)
-    private String cacheKey;
+    String cacheKey;
     @DatabaseField
-    private String resultClassName;
+    String resultClassName;
     @DatabaseField
-    private long timestamp;
+    long timestamp;
 
     @DatabaseField
-    private String resultIdString;
+    String resultIdString;
     @DatabaseField
-    private Character resultIdChar;
+    Character resultIdChar;
     @DatabaseField
-    private Byte resultIdByte;
+    Byte resultIdByte;
     @DatabaseField
-    private Short resultIdShort;
+    Short resultIdShort;
     @DatabaseField
-    private Integer resultIdInteger;
+    Integer resultIdInteger;
     @DatabaseField
-    private Long resultIdLong;
+    Long resultIdLong;
     @DatabaseField
-    private Float resultIdFloat;
+    Float resultIdFloat;
     @DatabaseField
-    private Double resultIdDouble;
+    Double resultIdDouble;
 
     public CacheEntry() {
 
@@ -41,7 +41,7 @@ public class CacheEntry {
         fillResultId(resultId);
     }
 
-    private void fillResultId(Object id) {
+    void fillResultId(Object id) {
 
         if (id instanceof String) {
             resultIdString = (String) id;

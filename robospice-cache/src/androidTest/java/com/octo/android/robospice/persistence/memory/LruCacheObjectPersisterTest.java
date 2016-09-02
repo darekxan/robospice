@@ -17,8 +17,8 @@ public class LruCacheObjectPersisterTest extends AndroidTestCase {
     private static final long TEST_EXPIRATION_DURATION_SHORT = 1;
     private static final long TEST_EXPIRATION_DURATION_LONG = TEST_EXPIRATION_DURATION_SHORT * 10;
 
-    private LruCacheStringObjectPersister testPersister;
-    private LruCacheStringObjectPersister testPersisterWithFallback;
+    LruCacheStringObjectPersister testPersister;
+    LruCacheStringObjectPersister testPersisterWithFallback;
 
     @Override
     public void setUp() throws CacheCreationException {

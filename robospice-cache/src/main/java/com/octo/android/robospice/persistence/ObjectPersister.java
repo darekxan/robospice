@@ -17,9 +17,9 @@ import com.octo.android.robospice.persistence.exception.CacheSavingException;
  */
 public abstract class ObjectPersister<T> implements Persister, CacheCleaner {
 
-    private boolean isAsyncSaveEnabled;
-    private Application application;
-    private Class<T> clazz;
+    boolean isAsyncSaveEnabled;
+    Application application;
+    Class<T> clazz;
 
     public ObjectPersister(Application application, Class<T> clazz) {
         this.application = application;

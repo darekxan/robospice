@@ -15,7 +15,7 @@ public class RetrofitJackson2SpiceServiceTest extends ServiceTestCase<RetrofitJa
 
     private static final int REQUEST_COMPLETION_TIMEOUT = 1000;
     private static final long SMALL_THREAD_SLEEP = 50;
-    private SpiceManager spiceManager;
+    SpiceManager spiceManager;
 
     public RetrofitJackson2SpiceServiceTest() {
         super(RetrofitJackson2SpiceTestService.class);

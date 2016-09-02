@@ -4,11 +4,11 @@ import com.google.api.client.util.Key;
 
 public class Wind {
     @Key
-    private String dir;
+    String dir;
     @Key
-    private String speed;
+    String speed;
     @Key
-    private String wind_unit;
+    String wind_unit;
 
     public String getDir() {
         return this.dir;

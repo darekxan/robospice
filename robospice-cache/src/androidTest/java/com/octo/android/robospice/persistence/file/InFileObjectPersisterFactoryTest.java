@@ -102,8 +102,8 @@ public class InFileObjectPersisterFactoryTest extends AndroidTestCase {
     // ============================================================================================
     // CLASS UNDER TEST
     // ============================================================================================
-    private final class InFileObjectPersisterFactoryUnderTest extends InFileObjectPersisterFactory {
-        private InFileObjectPersisterFactoryUnderTest(Application application) throws CacheCreationException {
+    final class InFileObjectPersisterFactoryUnderTest extends InFileObjectPersisterFactory {
+        InFileObjectPersisterFactoryUnderTest(Application application) throws CacheCreationException {
             super(application);
         }
 
@@ -119,7 +119,7 @@ public class InFileObjectPersisterFactoryTest extends AndroidTestCase {
 
     }
 
-    private class InFileObjectPersisterFactoryThatCreatesPersisterUnderTest extends InFileObjectPersisterFactory {
+    class InFileObjectPersisterFactoryThatCreatesPersisterUnderTest extends InFileObjectPersisterFactory {
 
         public InFileObjectPersisterFactoryThatCreatesPersisterUnderTest(Application application) throws CacheCreationException {
             super(application);

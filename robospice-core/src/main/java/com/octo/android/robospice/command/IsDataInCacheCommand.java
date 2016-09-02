@@ -6,9 +6,9 @@ import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 
 public class IsDataInCacheCommand extends SpiceManager.SpiceManagerCommand<Boolean> {
-    private Class<?> clazz;
-    private Object cacheKey;
-    private long cacheExpiryDuration;
+    Class<?> clazz;
+    Object cacheKey;
+    long cacheExpiryDuration;
 
     public IsDataInCacheCommand(SpiceManager spiceManager, Class<?> clazz, Object cacheKey, long cacheExpiryDuration) {
         super(spiceManager);

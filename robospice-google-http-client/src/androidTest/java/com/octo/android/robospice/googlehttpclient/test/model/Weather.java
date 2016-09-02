@@ -7,9 +7,9 @@ import com.google.api.client.util.Key;
 public class Weather {
 
     @Key
-    private List<CurrenWeather> currenWeather;
+    List<CurrenWeather> currenWeather;
     @Key
-    private List<Forecast> forecast;
+    List<Forecast> forecast;
 
     public Weather() {
     }

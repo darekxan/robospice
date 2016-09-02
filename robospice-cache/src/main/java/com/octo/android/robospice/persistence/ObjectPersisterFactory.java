@@ -20,9 +20,9 @@ import com.octo.android.robospice.persistence.exception.CacheCreationException;
  */
 public abstract class ObjectPersisterFactory implements Persister {
 
-    private Application mApplication;
-    private boolean isAsyncSaveEnabled;
-    private List<Class<?>> listHandledClasses;
+    Application mApplication;
+    boolean isAsyncSaveEnabled;
+    List<Class<?>> listHandledClasses;
 
     /**
      * Creates an {@link ObjectPersisterFactory} given an Android application.

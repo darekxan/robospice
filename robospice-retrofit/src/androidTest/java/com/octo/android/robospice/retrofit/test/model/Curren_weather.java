@@ -3,13 +3,13 @@ package com.octo.android.robospice.retrofit.test.model;
 import java.util.List;
 
 public class Curren_weather {
-    private String humidity;
-    private String pressure;
-    private String temp;
-    private String temp_unit;
-    private String weather_code;
-    private String weather_text;
-    private List<Wind> wind;
+    String humidity;
+    String pressure;
+    String temp;
+    String temp_unit;
+    String weather_code;
+    String weather_text;
+    List<Wind> wind;
 
     public String getHumidity() {
         return this.humidity;

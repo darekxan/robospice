@@ -8,7 +8,7 @@ import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 
 public class GetAllDataFromCacheCommand<T> extends SpiceManager.SpiceManagerCommand<List<T>> {
-    private Class<T> clazz;
+    Class<T> clazz;
 
     public GetAllDataFromCacheCommand(SpiceManager spiceManager, Class<T> clazz) {
         super(spiceManager);

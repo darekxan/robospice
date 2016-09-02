@@ -5,11 +5,11 @@ import com.j256.ormlite.field.DatabaseField;
 public class Day {
 
     @DatabaseField(generatedId = true)
-    private int id;
+    int id;
 
-    private String weather_code;
-    private String weather_text;
-    private Wind wind;
+    String weather_code;
+    String weather_text;
+    Wind wind;
 
     public String getWeather_code() {
         return this.weather_code;

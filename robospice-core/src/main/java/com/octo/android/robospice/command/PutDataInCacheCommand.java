@@ -6,8 +6,8 @@ import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 
 public class PutDataInCacheCommand<T> extends SpiceManager.SpiceManagerCommand<T> {
-    private Object cacheKey;
-    private T data;
+    Object cacheKey;
+    T data;
 
     public PutDataInCacheCommand(SpiceManager spiceManager, T data, Object cacheKey) {
         super(spiceManager);

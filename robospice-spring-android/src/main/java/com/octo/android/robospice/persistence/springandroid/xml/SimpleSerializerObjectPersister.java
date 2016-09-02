@@ -19,7 +19,7 @@ public final class SimpleSerializerObjectPersister<T> extends SpringAndroidObjec
     // ATTRIBUTES
     // ============================================================================================
 
-    private Serializer serializer = new Persister();
+    Serializer serializer = new Persister();
 
     // ============================================================================================
     // CONSTRUCTOR

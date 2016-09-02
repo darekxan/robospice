@@ -9,14 +9,14 @@ import org.simpleframework.xml.Root;
 @Root
 public class Weather {
 
-    private int id;
+    int id;
 
-    private String emptyField;
+    String emptyField;
 
     @ElementList(inline = true, required = false)
-    private Collection<Curren_weather> listWeather;
+    Collection<Curren_weather> listWeather;
     @ElementList(inline = true, required = false)
-    private Collection<Forecast> listForecast;
+    Collection<Forecast> listForecast;
 
     public Weather() {
     }

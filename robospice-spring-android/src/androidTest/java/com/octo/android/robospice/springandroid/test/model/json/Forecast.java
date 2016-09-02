@@ -6,12 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Forecast {
-    private String date;
-    private List<Day> day;
-    private String day_max_temp;
-    private List<Day> night;
-    private String night_min_temp;
-    private String temp_unit;
+    String date;
+    List<Day> day;
+    String day_max_temp;
+    List<Day> night;
+    String night_min_temp;
+    String temp_unit;
 
     public String getDate() {
         return this.date;

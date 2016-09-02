@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather {
 
-    private List<CurrenWeather> currenWeather;
-    private List<Forecast> forecast;
+    List<CurrenWeather> currenWeather;
+    List<Forecast> forecast;
 
     public Weather() {
     }

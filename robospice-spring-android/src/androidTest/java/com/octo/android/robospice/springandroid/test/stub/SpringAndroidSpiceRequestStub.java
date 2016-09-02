@@ -9,8 +9,8 @@ import com.octo.android.robospice.springandroid.test.model.json.Weather;
 
 public class SpringAndroidSpiceRequestStub extends
     SpringAndroidSpiceRequest<Weather> {
-    private ReentrantLock reentrantLock = new ReentrantLock();
-    private Condition loadDataFromNetworkHasBeenExecuted = reentrantLock
+    ReentrantLock reentrantLock = new ReentrantLock();
+    Condition loadDataFromNetworkHasBeenExecuted = reentrantLock
         .newCondition();
 
     public SpringAndroidSpiceRequestStub(Class<Weather> clazz) {

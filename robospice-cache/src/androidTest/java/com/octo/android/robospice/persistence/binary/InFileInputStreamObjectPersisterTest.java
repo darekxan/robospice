@@ -22,7 +22,7 @@ public class InFileInputStreamObjectPersisterTest extends AndroidTestCase {
 
     private static final String TEST_CACHE_KEY = "TEST_CACHE_KEY";
 
-    private InFileInputStreamObjectPersister inputStreamCacheManager;
+    InFileInputStreamObjectPersister inputStreamCacheManager;
 
     @Override
     protected void setUp() throws Exception {

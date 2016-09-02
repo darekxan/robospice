@@ -34,7 +34,7 @@ public class CustomizablePriorityThreadFactoryTest extends AndroidTestCase {
     // ----------------------------------
     // CLASSES UNDER TESTS
     // ----------------------------------
-    private final class DummyRunnable implements Runnable {
+    final class DummyRunnable implements Runnable {
         @Override
         public void run() {
         }

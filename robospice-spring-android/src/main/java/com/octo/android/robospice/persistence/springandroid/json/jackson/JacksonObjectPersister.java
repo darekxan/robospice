@@ -20,7 +20,7 @@ public final class JacksonObjectPersister<T> extends SpringAndroidObjectPersiste
     // ATTRIBUTES
     // ============================================================================================
 
-    private final ObjectMapper mJsonMapper;
+    final ObjectMapper mJsonMapper;
 
     // ============================================================================================
     // CONSTRUCTOR

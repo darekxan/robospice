@@ -24,7 +24,7 @@ public class InFileBigInputStreamObjectPersisterTest extends AndroidTestCase {
 
     private static final long SMALL_THREAD_SLEEP = 50;
 
-    private InFileBigInputStreamObjectPersister inputStreamPersister;
+    InFileBigInputStreamObjectPersister inputStreamPersister;
 
     @Override
     protected void setUp() throws Exception {

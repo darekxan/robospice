@@ -33,14 +33,14 @@ public abstract class SpiceNotificationService extends Service {
     public static final String BUNDLE_KEY_SERVICE_CLASS = "BUNDLE_KEY_SERVICE_CLASS";
     public static final String BUNDLE_KEY_FOREGROUND = "BUNDLE_KEY_FOREGROUND";
 
-    private int notificationId = DEFAULT_ROBOSPICE_NOTIFICATION_ID;
-    private Class<?> requestClass;
-    private String requestCacheKey;
-    private boolean foreground;
-    private Class<? extends SpiceService> spiceServiceClass;
+    int notificationId = DEFAULT_ROBOSPICE_NOTIFICATION_ID;
+    Class<?> requestClass;
+    String requestCacheKey;
+    boolean foreground;
+    Class<? extends SpiceService> spiceServiceClass;
 
-    private NotificationManager notificationManager;
-    private SpiceManager spiceManager;
+    NotificationManager notificationManager;
+    SpiceManager spiceManager;
 
     public static Intent createIntent(final Context context, final Class<? extends SpiceNotificationService> clazz, final Class<? extends SpiceService> spiceServiceClass, final int notificationId,
         final Class<?> requestResultType, final String cacheKey, final boolean foreground) {
@@ -101,7 +101,7 @@ public abstract class SpiceNotificationService extends Service {
     // INNER CLASS
     // ----------------------------------
 
-    private class NotificationRequestListener<T> implements RequestListener<T>, RequestProgressListener {
+    class NotificationRequestListener<T> implements RequestListener<T>, RequestProgressListener {
 
         @Override
         public void onRequestFailure(final SpiceException arg0) {

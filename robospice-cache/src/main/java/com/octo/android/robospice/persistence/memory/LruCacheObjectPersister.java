@@ -17,8 +17,8 @@ import com.octo.android.robospice.persistence.exception.CacheSavingException;
  * @author Mike Jancola
  */
 public class LruCacheObjectPersister<T> extends ObjectPersister<T> {
-    private LruCache<Object, CacheItem<T>> lruCache;
-    private ObjectPersister<T> decoratedPersister;
+    LruCache<Object, CacheItem<T>> lruCache;
+    ObjectPersister<T> decoratedPersister;
 
     public LruCacheObjectPersister(Class<T> clazz, LruCache<Object, CacheItem<T>> lruCache) {
         super(null, clazz);

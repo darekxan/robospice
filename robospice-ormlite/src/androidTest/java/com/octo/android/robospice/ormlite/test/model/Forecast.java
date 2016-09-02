@@ -7,17 +7,17 @@ import com.j256.ormlite.field.DatabaseField;
 public class Forecast {
 
     @DatabaseField(generatedId = true)
-    private int id;
+    int id;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "weather_id")
-    private Weather weather;
+    Weather weather;
 
-    private String date;
-    private List<Day> listDay;
-    private String day_max_temp;
-    private List<Night> listNight;
-    private String night_min_temp;
-    private String temp_unit;
+    String date;
+    List<Day> listDay;
+    String day_max_temp;
+    List<Night> listNight;
+    String night_min_temp;
+    String temp_unit;
 
     public String getDate() {
         return this.date;

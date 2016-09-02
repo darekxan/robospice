@@ -13,9 +13,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class PausablePriorityBlockingQueue<T> extends PriorityBlockingQueue<T> {
     private static final long serialVersionUID = 3726077277740650698L;
-    private boolean isPaused;
-    private transient ReentrantLock pauseLock = new ReentrantLock();
-    private transient Condition unpaused = pauseLock.newCondition();
+    boolean isPaused;
+    transient ReentrantLock pauseLock = new ReentrantLock();
+    transient Condition unpaused = pauseLock.newCondition();
 
     public PausablePriorityBlockingQueue() {
         super();
@@ -86,7 +86,7 @@ public class PausablePriorityBlockingQueue<T> extends PriorityBlockingQueue<T> {
     }
 
     // makes findbugs happy, but unused
-    private void readObject(ObjectInputStream ois) {
+    void readObject(ObjectInputStream ois) {
         try {
             ois.defaultReadObject();
             pauseLock = new ReentrantLock();

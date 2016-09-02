@@ -27,7 +27,7 @@ public class RetrofitObjectPersister<T> extends InFileObjectPersister<T> {
     // ATTRIBUTES
     // ============================================================================================
 
-    private final Converter converter;
+    final Converter converter;
 
     // ============================================================================================
     // CONSTRUCTOR
@@ -75,7 +75,7 @@ public class RetrofitObjectPersister<T> extends InFileObjectPersister<T> {
         return data;
     }
 
-    private void saveData(T data, Object cacheKey) throws IOException, CacheSavingException {
+    void saveData(T data, Object cacheKey) throws IOException, CacheSavingException {
         // transform the content in json to store it in the cache
         TypedOutput typedBytes = converter.toBody(data);
         FileOutputStream out = null;

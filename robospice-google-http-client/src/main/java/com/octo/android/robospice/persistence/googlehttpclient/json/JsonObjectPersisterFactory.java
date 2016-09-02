@@ -14,7 +14,7 @@ public abstract class JsonObjectPersisterFactory extends InFileObjectPersisterFa
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private JsonFactory jsonFactory;
+    JsonFactory jsonFactory;
 
     // ----------------------------------
     // CONSTRUCTOR

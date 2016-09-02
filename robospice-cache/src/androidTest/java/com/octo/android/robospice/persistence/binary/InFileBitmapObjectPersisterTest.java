@@ -22,8 +22,8 @@ public class InFileBitmapObjectPersisterTest extends AndroidTestCase {
     // in ms
     private static final long TEST_EXPIRATION_DURATION = 1;
 
-    private Application application;
-    private InFileBitmapObjectPersister testPersister;
+    Application application;
+    InFileBitmapObjectPersister testPersister;
 
     @Override
     protected void setUp() throws Exception {
@@ -40,7 +40,7 @@ public class InFileBitmapObjectPersisterTest extends AndroidTestCase {
         super.tearDown();
     }
 
-    private void assertBitmapSizeEquals(int expectedBitmapSize, Bitmap bitmap) {
+    void assertBitmapSizeEquals(int expectedBitmapSize, Bitmap bitmap) {
         assertEquals(expectedBitmapSize, bitmap.getRowBytes() * bitmap.getHeight());
     }
 

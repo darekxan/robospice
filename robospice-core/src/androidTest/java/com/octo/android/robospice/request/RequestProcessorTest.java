@@ -7,7 +7,6 @@ import java.util.concurrent.ExecutorService;
 
 import org.easymock.EasyMock;
 
-import roboguice.util.temp.Ln;
 import android.content.Context;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -37,6 +36,8 @@ import com.octo.android.robospice.stub.SpiceRequestFailingStub;
 import com.octo.android.robospice.stub.SpiceRequestStub;
 import com.octo.android.robospice.stub.SpiceRequestSucceedingStub;
 
+import roboguice.util.temp.Ln;
+
 @SmallTest
 public class RequestProcessorTest extends AndroidTestCase {
 
@@ -53,14 +54,14 @@ public class RequestProcessorTest extends AndroidTestCase {
     private static final long TEST_DELAY_BEFORE_RETRY = WAIT_BEFORE_REQUEST_EXECUTION;
     private static final int TEST_RETRY_COUNT = 3;
 
-    private CacheManager mockCacheManager;
-    private RequestProcessor requestProcessorUnderTest;
-    private RequestProcessorListener requestProcessorListener;
-    private MockNetworkStateChecker networkStateChecker;
-    private DefaultRequestListenerNotifier progressReporter;
-    private SpiceServiceListenerNotifier spiceServiceListenerNotifier;
-    private RequestProgressManager mockRequestProgressManager;
-    private DefaultRequestRunner mockRequestRunner;
+    CacheManager mockCacheManager;
+    RequestProcessor requestProcessorUnderTest;
+    RequestProcessorListener requestProcessorListener;
+    MockNetworkStateChecker networkStateChecker;
+    DefaultRequestListenerNotifier progressReporter;
+    SpiceServiceListenerNotifier spiceServiceListenerNotifier;
+    RequestProgressManager mockRequestProgressManager;
+    DefaultRequestRunner mockRequestRunner;
 
     @Override
     protected void setUp() throws Exception {
@@ -1309,7 +1310,7 @@ public class RequestProcessorTest extends AndroidTestCase {
     // PRIVATE METHODS
     // ============================================================================================
 
-    private <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, T returnedData) {
+    <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, T returnedData) {
         SpiceRequestStub<T> stubContentRequest = new SpiceRequestSucceedingStub<T>(clazz, returnedData);
         return new CachedSpiceRequestStub<T>(stubContentRequest, null, 0 /*
                                                                           * What
@@ -1318,24 +1319,24 @@ public class RequestProcessorTest extends AndroidTestCase {
                                                                           */);
     }
 
-    private <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache, T returnedData) {
+    <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache, T returnedData) {
         SpiceRequestStub<T> stubContentRequest = new SpiceRequestSucceedingStub<T>(clazz, returnedData);
         return new CachedSpiceRequestStub<T>(stubContentRequest, cacheKey, maxTimeInCache);
     }
 
-    private <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache, T returnedData, long waitBeforeExecution) {
+    <T> CachedSpiceRequestStub<T> createSuccessfulRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache, T returnedData, long waitBeforeExecution) {
         SpiceRequestStub<T> stubContentRequest = new SpiceRequestSucceedingStub<T>(clazz, returnedData, waitBeforeExecution);
         return new CachedSpiceRequestStub<T>(stubContentRequest, cacheKey, maxTimeInCache);
     }
 
-    private <T> CachedSpiceRequestStub<T> createFailedRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache) {
+    <T> CachedSpiceRequestStub<T> createFailedRequest(Class<T> clazz, Object cacheKey, long maxTimeInCache) {
         SpiceRequestStub<T> stubContentRequest = new SpiceRequestFailingStub<T>(clazz);
         return new CachedSpiceRequestStub<T>(stubContentRequest, cacheKey, maxTimeInCache);
     }
 
-    private class MockNetworkStateChecker implements NetworkStateChecker {
+    class MockNetworkStateChecker implements NetworkStateChecker {
 
-        private boolean networkAvailable = true;
+        boolean networkAvailable = true;
 
         public void setNetworkAvailable(boolean networkAvailable) {
             this.networkAvailable = networkAvailable;

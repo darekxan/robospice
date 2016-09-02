@@ -5,7 +5,7 @@ import com.octo.android.robospice.SpiceService;
 import com.octo.android.robospice.request.listener.SpiceServiceListener;
 
 public class AddSpiceServiceListenerCommand extends SpiceManager.SpiceManagerCommand<Void> {
-    private SpiceServiceListener spiceServiceListener;
+    SpiceServiceListener spiceServiceListener;
 
     public AddSpiceServiceListenerCommand(SpiceManager spiceManager, SpiceServiceListener spiceServiceListener) {
         super(spiceManager);

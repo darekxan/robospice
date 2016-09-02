@@ -17,7 +17,7 @@ import com.octo.android.robospice.springandroid.test.model.xml.Wind;
 @SmallTest
 public class InFileWeatherPersisterTest extends AndroidTestCase {
     private static final long FIVE_SECONDS = 5 * DurationInMillis.ONE_SECOND;
-    private InFileObjectPersister<Weather> dataPersistenceManager;
+    InFileObjectPersister<Weather> dataPersistenceManager;
     private static final String FILE_NAME = "toto";
     private static final String FILE_NAME2 = "tutu";
     private static final Curren_weather TEST_TEMP = new Curren_weather();
@@ -168,7 +168,7 @@ public class InFileWeatherPersisterTest extends AndroidTestCase {
         assertFalse(listWeatherResult.contains(weatherRequestStatus2));
     }
 
-    private Weather buildWeather(Curren_weather curren_weather) {
+    Weather buildWeather(Curren_weather curren_weather) {
         Weather weather = new Weather();
         List<Curren_weather> currents = new ArrayList<Curren_weather>();
         currents.add(curren_weather);

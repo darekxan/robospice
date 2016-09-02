@@ -4,23 +4,23 @@ import org.simpleframework.xml.Element;
 
 public class Curren_weather {
 
-    private int id;
+    int id;
 
     @Element(required = false)
-    private String humidity;
+    String humidity;
     @Element(required = false)
-    private String pressure;
+    String pressure;
     @Element(required = false)
-    private String temp;
+    String temp;
     @Element(required = false)
-    private String temp_unit;
+    String temp_unit;
     @Element(required = false)
-    private String weather_code;
+    String weather_code;
     @Element(required = false)
-    private String weather_text;
+    String weather_text;
 
     @Element(required = false)
-    private Wind wind;
+    Wind wind;
 
     public String getHumidity() {
         return this.humidity;

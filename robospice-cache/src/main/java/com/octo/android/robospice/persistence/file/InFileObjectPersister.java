@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import roboguice.util.temp.Ln;
 import android.app.Application;
 
 import com.octo.android.robospice.persistence.DurationInMillis;
@@ -16,6 +15,8 @@ import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.KeySanitationExcepion;
 import com.octo.android.robospice.persistence.keysanitation.KeySanitizer;
+
+import roboguice.util.temp.Ln;
 
 /**
  * An {@link ObjectPersister} that saves/loads data in a file.
@@ -38,11 +39,11 @@ public abstract class InFileObjectPersister<T> extends ObjectPersister<T> {
     // ----------------------------------
     // ATTRIBUTES
     // ----------------------------------
-    private KeySanitizer keySanitizer;
+    KeySanitizer keySanitizer;
 
-    private File cacheFolder;
+    File cacheFolder;
 
-    private String factoryCachePrefix = "";
+    String factoryCachePrefix = "";
 
     // ----------------------------------
     // CONSTRUCTOR
@@ -209,7 +210,7 @@ public abstract class InFileObjectPersister<T> extends ObjectPersister<T> {
     // ----------------------------------
     // PROTECTED METHODS
     // ----------------------------------
-    /* package-private */
+    /* package-*/
     void setFactoryCachePrefix(String factoryCachePrefix) {
         this.factoryCachePrefix = factoryCachePrefix;
     }

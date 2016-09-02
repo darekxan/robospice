@@ -24,11 +24,11 @@ public class RequestProgressManager {
     // ============================================================================================
     // ATTRIBUTES
     // ============================================================================================
-    private Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToRequestListener;
+    Map<CachedSpiceRequest<?>, Set<RequestListener<?>>> mapRequestToRequestListener;
 
-    private final RequestProcessorListener requestProcessorListener;
-    private final RequestListenerNotifier requestListenerNotifier;
-    private final SpiceServiceListenerNotifier spiceServiceListenerNotifier;
+    final RequestProcessorListener requestProcessorListener;
+    final RequestListenerNotifier requestListenerNotifier;
+    final SpiceServiceListenerNotifier spiceServiceListenerNotifier;
 
     // ============================================================================================
     // CONSTRUCTOR

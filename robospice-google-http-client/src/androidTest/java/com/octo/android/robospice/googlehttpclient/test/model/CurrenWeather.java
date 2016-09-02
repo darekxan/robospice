@@ -6,19 +6,19 @@ import com.google.api.client.util.Key;
 
 public class CurrenWeather {
     @Key
-    private String humidity;
+    String humidity;
     @Key
-    private String pressure;
+    String pressure;
     @Key
-    private String temp;
+    String temp;
     @Key
-    private String temp_unit;
+    String temp_unit;
     @Key
-    private String weather_code;
+    String weather_code;
     @Key
-    private String weather_text;
+    String weather_text;
     @Key
-    private List<Wind> wind;
+    List<Wind> wind;
 
     public String getHumidity() {
         return this.humidity;

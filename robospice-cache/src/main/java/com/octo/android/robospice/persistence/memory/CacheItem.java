@@ -7,8 +7,8 @@ package com.octo.android.robospice.persistence.memory;
  *            the type of object that will be stored in the cache.
  */
 public class CacheItem<T> {
-    private final long creationDate;
-    private final T data;
+    final long creationDate;
+    final T data;
 
     public CacheItem(T data) {
         this.creationDate = System.currentTimeMillis();

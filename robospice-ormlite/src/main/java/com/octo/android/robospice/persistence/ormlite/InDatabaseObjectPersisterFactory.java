@@ -16,9 +16,9 @@ import roboguice.util.temp.Ln;
 
 public class InDatabaseObjectPersisterFactory extends ObjectPersisterFactory {
 
-    private RoboSpiceDatabaseHelper databaseHelper;
-    private boolean isAllTableCreated = false;
-    private Map<Class<?>, Uri> mapHandledClassesToNotificationUri;
+    RoboSpiceDatabaseHelper databaseHelper;
+    boolean isAllTableCreated = false;
+    Map<Class<?>, Uri> mapHandledClassesToNotificationUri;
 
     public InDatabaseObjectPersisterFactory(Application application, RoboSpiceDatabaseHelper databaseHelper, Map<Class<?>, Uri> mapHandledClassesToNotificationUri) {
         super(application, new ArrayList<Class<?>>(mapHandledClassesToNotificationUri.keySet()));
@@ -43,7 +43,7 @@ public class InDatabaseObjectPersisterFactory extends ObjectPersisterFactory {
         }
     }
 
-    private void createTableIfNotExists(Class<?> clazz) {
+    void createTableIfNotExists(Class<?> clazz) {
         try {
             TableUtils.createTableIfNotExists(databaseHelper.getConnectionSource(), clazz);
         } catch (SQLException e) {
@@ -51,7 +51,7 @@ public class InDatabaseObjectPersisterFactory extends ObjectPersisterFactory {
         }
     }
 
-    private void initializeTablesIfNeeded() {
+    void initializeTablesIfNeeded() {
         if (!isAllTableCreated) {
             createTableIfNotExists(CacheEntry.class);
 

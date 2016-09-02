@@ -36,14 +36,14 @@ public class DefaultRequestRunner implements RequestRunner {
      * "http://blog.zenika.com/index.php?post/2012/04/11/Introduction-programmation-concurrente-Java-2sur2. "
      * >blog article</a>.
      */
-    private ExecutorService executorService = null;
-    private final CacheManager cacheManager;
-    private final Context applicationContext;
-    private boolean failOnCacheError;
-    private final NetworkStateChecker networkStateChecker;
-    private final RequestProgressManager requestProgressManager;
-    private boolean isStopped;
-    private ReentrantLock executorLock;
+    ExecutorService executorService = null;
+    final CacheManager cacheManager;
+    final Context applicationContext;
+    boolean failOnCacheError;
+    final NetworkStateChecker networkStateChecker;
+    final RequestProgressManager requestProgressManager;
+    boolean isStopped;
+    ReentrantLock executorLock;
 
     // ============================================================================================
     // CONSTRUCTOR
@@ -258,15 +258,15 @@ public class DefaultRequestRunner implements RequestRunner {
     // PRIVATE
     // ============================================================================================
 
-    private <T> T loadDataFromCache(final Class<T> clazz, final Object cacheKey, final long maxTimeInCacheBeforeExpiry) throws CacheLoadingException, CacheCreationException {
+    <T> T loadDataFromCache(final Class<T> clazz, final Object cacheKey, final long maxTimeInCacheBeforeExpiry) throws CacheLoadingException, CacheCreationException {
         return cacheManager.loadDataFromCache(clazz, cacheKey, maxTimeInCacheBeforeExpiry);
     }
 
-    private <T> T saveDataToCacheAndReturnData(final T data, final Object cacheKey) throws CacheSavingException, CacheCreationException {
+    <T> T saveDataToCacheAndReturnData(final T data, final Object cacheKey) throws CacheSavingException, CacheCreationException {
         return cacheManager.saveDataToCacheAndReturnData(data, cacheKey);
     }
 
-    private void handleRetry(final CachedSpiceRequest<?> request, final SpiceException e) {
+    void handleRetry(final CachedSpiceRequest<?> request, final SpiceException e) {
         if (request.getRetryPolicy() != null) {
             request.getRetryPolicy().retry(e);
             if (request.getRetryPolicy().getRetryCount() > 0) {
@@ -287,11 +287,11 @@ public class DefaultRequestRunner implements RequestRunner {
         requestProgressManager.notifyListenersOfRequestFailure(request, e);
     }
 
-    private static String getTimeString(long millis) {
+    static String getTimeString(long millis) {
         return String.format("%02d ms", millis);
     }
 
-    private static void printRequestProcessingDuration(long startTime, CachedSpiceRequest<?> request) {
+    static void printRequestProcessingDuration(long startTime, CachedSpiceRequest<?> request) {
         Ln.d("It tooks %s to process request %s.", getTimeString(System.currentTimeMillis() - startTime), request.toString());
     }
 

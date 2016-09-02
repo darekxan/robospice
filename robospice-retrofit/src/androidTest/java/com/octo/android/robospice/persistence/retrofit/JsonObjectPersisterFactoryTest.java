@@ -21,7 +21,7 @@ public abstract class JsonObjectPersisterFactoryTest extends AndroidTestCase {
     private static final String TEST_TEMP = "28";
     private static final String TEST_TEMP2 = "30";
     private static final long SMALL_THREAD_SLEEP = 50;
-    private InFileObjectPersister<WeatherResult> inFileObjectPersister;
+    InFileObjectPersister<WeatherResult> inFileObjectPersister;
 
     @Override
     protected void setUp() throws Exception {
@@ -166,7 +166,7 @@ public abstract class JsonObjectPersisterFactoryTest extends AndroidTestCase {
         assertFalse(listWeatherResult.contains(weatherRequestStatus2));
     }
 
-    private WeatherResult buildWeather(String temp, String tempUnit) {
+    WeatherResult buildWeather(String temp, String tempUnit) {
         WeatherResult weatherRequestStatus = new WeatherResult();
         Weather weather = new Weather();
         List<Curren_weather> currents = new ArrayList<Curren_weather>();
