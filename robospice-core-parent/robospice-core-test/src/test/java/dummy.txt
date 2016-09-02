@@ -1,1 +1,0 @@
-This file is just for git and android connector to live harmoniously.

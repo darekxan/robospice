@@ -1,0 +1,46 @@
+description = 'Robospice - Extension OkHttp Module'
+
+apply plugin: 'com.android.library'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+
+        versionCode 1414
+        versionName '1414'
+
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard.pro'
+        }
+        debug {}
+    }
+}
+
+dependencies {
+    compile project(':robospice-core')
+
+    compile 'commons-logging:commons-logging:1.2'
+
+    compile group: 'com.squareup.okhttp', name: 'okhttp', version: '1.6.0'
+    compile group: 'com.squareup.okhttp', name: 'okhttp-urlconnection', version: '1.6.0'
+
+    androidTestCompile 'com.google.mockwebserver:mockwebserver:20130706'
+    androidTestCompile 'junit:junit:4.12'
+}

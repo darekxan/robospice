@@ -1,0 +1,47 @@
+description = 'Robospice - Extension Retrofit Module'
+
+apply plugin: 'com.android.library'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+
+        versionCode 1414
+        versionName '1414'
+
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+
+        consumerProguardFiles 'proguard.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard.pro'
+        }
+        debug {}
+    }
+}
+
+dependencies {
+    compile project(':robospice-core')
+    compile group: 'com.squareup.retrofit', name: 'retrofit', version: '1.6.1'
+    compile group: 'com.squareup.retrofit', name: 'converter-jackson', version: '1.6.1'
+
+    compile 'commons-logging:commons-logging:1.2'
+
+    androidTestCompile 'com.google.mockwebserver:mockwebserver:20130706'
+    androidTestCompile 'junit:junit:4.12'
+}

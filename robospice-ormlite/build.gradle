@@ -1,0 +1,55 @@
+description = 'Robospice - Extension ORMLite Module'
+
+apply plugin: 'com.android.library'
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+
+        versionCode 1414
+        versionName '1414'
+
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard.pro'
+        }
+        debug {}
+    }
+}
+
+dependencies {
+    compile project(':robospice-cache')
+
+    compile "com.j256.ormlite:ormlite-core:4.48"
+    compile "com.j256.ormlite:ormlite-android:4.48"
+    compile "com.tojc.ormlite.android:ormlite-content-provider-library:1.0.5-SNAPSHOT"
+
+    compile 'commons-logging:commons-logging:1.2'
+
+    compile 'com.squareup.okhttp:okhttp:1.6.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:1.6.0'
+
+    androidTestCompile('org.easymock:easymock:3.2') {
+        exclude(module: 'cglib-nodep')
+        exclude(module: 'objenesis')
+    }
+
+    androidTestCompile 'com.google.mockwebserver:mockwebserver:20130706'
+    androidTestCompile 'junit:junit:4.12'
+}

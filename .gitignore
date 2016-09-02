@@ -44,3 +44,6 @@ target/
 
 #symoblic link to action bar sherlock
 library
+
+build/
+.gradle/

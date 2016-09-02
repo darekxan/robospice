@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.octo.android.robospice.core.test">
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="false" 
+        android:icon="@android:drawable/ic_lock_lock" >
+
+        <service
+            android:name=".SpiceTestService"
+            android:exported="false" />
+        <service
+            android:name=".InvalidSpiceTestService"
+            android:exported="false" />
+        <service android:name="SpiceTestServiceWithObserverAndRequestTrackerSupport" >
+        </service>
+        <service android:name="SpiceTestServiceWithObserverSupport" >
+        </service>
+    </application>
+
+</manifest>
