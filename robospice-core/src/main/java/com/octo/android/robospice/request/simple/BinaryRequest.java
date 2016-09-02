@@ -6,12 +6,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.commons.io.IOUtils;
-
-import roboguice.util.temp.Ln;
-
 import com.octo.android.robospice.request.ProgressByteProcessor;
 import com.octo.android.robospice.request.SpiceRequest;
+import com.octo.android.robospice.utils.IOUtils;
+
+import roboguice.util.temp.Ln;
 
 /**
  * Abstract class used to download binaries. See {@link SmallBinaryRequest} and

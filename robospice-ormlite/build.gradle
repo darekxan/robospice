@@ -40,8 +40,6 @@ dependencies {
     compile "com.j256.ormlite:ormlite-android:4.48"
     compile "com.tojc.ormlite.android:ormlite-content-provider-library:1.0.5-SNAPSHOT"
 
-    compile 'commons-logging:commons-logging:1.2'
-
     compile 'com.squareup.okhttp:okhttp:1.6.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:1.6.0'
 

@@ -6,13 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
-
 import android.app.Application;
 
 import com.octo.android.robospice.persistence.ObjectPersister;
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
+import com.octo.android.robospice.utils.IOUtils;
 
 /**
  * Stores / retrieves data in file system. This {@link ObjectPersister} is

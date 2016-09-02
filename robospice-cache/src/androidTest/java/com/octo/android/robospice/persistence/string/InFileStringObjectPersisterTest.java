@@ -5,14 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.CharEncoding;
-
 import android.app.Application;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 
 import com.octo.android.robospice.persistence.DurationInMillis;
+import com.octo.android.robospice.utils.CharEncoding;
+import com.octo.android.robospice.utils.IOUtils;
 
 @MediumTest
 public class InFileStringObjectPersisterTest extends AndroidTestCase {

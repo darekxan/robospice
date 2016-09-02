@@ -8,18 +8,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
-
-import retrofit.converter.Converter;
-import retrofit.mime.TypedInput;
-import retrofit.mime.TypedOutput;
-import roboguice.util.temp.Ln;
 import android.app.Application;
 
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 import com.octo.android.robospice.persistence.file.InFileObjectPersister;
+import com.octo.android.robospice.utils.IOUtils;
+
+import retrofit.converter.Converter;
+import retrofit.mime.TypedInput;
+import retrofit.mime.TypedOutput;
+import roboguice.util.temp.Ln;
 
 public class RetrofitObjectPersister<T> extends InFileObjectPersister<T> {
 

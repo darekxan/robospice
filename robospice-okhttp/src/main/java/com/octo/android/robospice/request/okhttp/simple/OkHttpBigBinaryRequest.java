@@ -6,12 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import org.apache.commons.io.IOUtils;
+import com.octo.android.robospice.request.ProgressByteProcessor;
+import com.octo.android.robospice.utils.IOUtils;
 
 import roboguice.util.temp.Ln;
-
-import com.octo.android.robospice.request.ProgressByteProcessor;
 
 /**
  * Downloads big images in size. All data is passed to the listener using file

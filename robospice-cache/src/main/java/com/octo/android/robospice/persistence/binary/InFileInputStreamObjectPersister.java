@@ -7,16 +7,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-
-import roboguice.util.temp.Ln;
 import android.app.Application;
 
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 import com.octo.android.robospice.persistence.file.InFileObjectPersister;
+import com.octo.android.robospice.utils.FileUtils;
+import com.octo.android.robospice.utils.IOUtils;
+
+import roboguice.util.temp.Ln;
 
 public class InFileInputStreamObjectPersister extends InFileObjectPersister<InputStream> {
 

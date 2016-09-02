@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.commons.lang3.CharEncoding;
+import com.octo.android.robospice.utils.CharEncoding;
 
 public final class Strings {
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;

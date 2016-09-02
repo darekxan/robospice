@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
-
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.LargeTest;
 
@@ -13,6 +11,7 @@ import com.google.mockwebserver.MockResponse;
 import com.google.mockwebserver.MockWebServer;
 import com.octo.android.robospice.core.test.R;
 import com.octo.android.robospice.request.simple.BigBinaryRequest;
+import com.octo.android.robospice.utils.IOUtils;
 
 /**
  * This test is a good example of how easy it is to test RoboSpice requests.

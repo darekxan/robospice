@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.CharEncoding;
-import org.apache.commons.lang3.StringUtils;
-
-import roboguice.util.temp.Ln;
 import android.app.Application;
+import android.text.TextUtils;
 
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 import com.octo.android.robospice.persistence.file.InFileObjectPersister;
+import com.octo.android.robospice.utils.CharEncoding;
+import com.octo.android.robospice.utils.FileUtils;
+
+import roboguice.util.temp.Ln;
 
 public abstract class SpringAndroidObjectPersister<T> extends InFileObjectPersister<T> {
 
@@ -40,7 +40,7 @@ public abstract class SpringAndroidObjectPersister<T> extends InFileObjectPersis
             synchronized (file.getAbsolutePath().intern()) {
                 resultJson = FileUtils.readFileToString(file, CharEncoding.UTF_8);
             }
-            if (!StringUtils.isEmpty(resultJson)) {
+            if (!TextUtils.isEmpty(resultJson)) {
                 T result = deserializeData(resultJson);
                 return result;
             }

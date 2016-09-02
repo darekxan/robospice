@@ -1,22 +1,19 @@
 package com.octo.android.robospice.request;
 
-import com.google.mockwebserver.MockResponse;
-import com.google.mockwebserver.MockWebServer;
-
-import com.octo.android.robospice.core.test.R;
-import com.octo.android.robospice.request.simple.BitmapRequest;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpStatus;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import android.graphics.Bitmap;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import com.google.mockwebserver.MockResponse;
+import com.google.mockwebserver.MockWebServer;
+import com.octo.android.robospice.core.test.R;
+import com.octo.android.robospice.request.simple.BitmapRequest;
+import com.octo.android.robospice.utils.IOUtils;
 
 /**
  * This test is a good example of how easy it is to test RoboSpice requests.
@@ -25,6 +22,8 @@ import java.io.InputStream;
  */
 @LargeTest
 public class BitmapRequestTest extends AndroidTestCase {
+
+    private static final int SC_NOT_FOUND = 404;
 
     private static final int TEST_BITMAP_HEIGHT = 36;
     private static final int TEST_BITMAP_WIDTH = 36;
@@ -82,7 +81,7 @@ public class BitmapRequestTest extends AndroidTestCase {
 
     public void test_loadDataFromNetwork_throws_exception() throws Exception {
         // given;
-        mockWebServer.enqueue(new MockResponse().setResponseCode(HttpStatus.SC_NOT_FOUND));
+        mockWebServer.enqueue(new MockResponse().setResponseCode(SC_NOT_FOUND));
         mockWebServer.play();
 
         // when

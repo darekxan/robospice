@@ -10,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.commons.io.IOUtils;
-
 import android.content.Context;
 import android.test.AndroidTestCase;
 import android.view.LayoutInflater;
@@ -29,6 +27,7 @@ import com.octo.android.robospice.spicelist.SpiceListItemView;
 import com.octo.android.robospice.spicelist.simple.BitmapSpiceManager;
 import com.octo.android.robospice.spicelist.simple.SpiceArrayAdapter;
 import com.octo.android.robospice.ui.spicelist.test.R;
+import com.octo.android.robospice.utils.IOUtils;
 
 public class SpiceArrayAdapterTest extends AndroidTestCase {
 

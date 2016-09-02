@@ -3,9 +3,6 @@ package com.octo.android.robospice.request;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpStatus;
-
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.LargeTest;
 
@@ -13,6 +10,7 @@ import com.google.mockwebserver.MockResponse;
 import com.google.mockwebserver.MockWebServer;
 import com.octo.android.robospice.core.test.R;
 import com.octo.android.robospice.request.simple.SmallBinaryRequest;
+import com.octo.android.robospice.utils.IOUtils;
 
 /**
  * This test is a good example of how easy it is to test RoboSpice requests.
@@ -22,7 +20,9 @@ import com.octo.android.robospice.request.simple.SmallBinaryRequest;
 @LargeTest
 public class SmallBinaryRequestTest extends AndroidTestCase {
 
-    private MockWebServer mockWebServer;
+    private static final int SC_NOT_FOUND = 404;
+
+    MockWebServer mockWebServer;
 
     @Override
     protected void setUp() throws Exception {
@@ -52,7 +52,7 @@ public class SmallBinaryRequestTest extends AndroidTestCase {
 
     public void test_loadDataFromNetwork_throws_exception() throws Exception {
         // given;
-        mockWebServer.enqueue(new MockResponse().setResponseCode(HttpStatus.SC_NOT_FOUND));
+        mockWebServer.enqueue(new MockResponse().setResponseCode(SC_NOT_FOUND));
         mockWebServer.play();
 
         // when

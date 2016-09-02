@@ -5,12 +5,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.CharEncoding;
+import com.octo.android.robospice.request.SpiceRequest;
+import com.octo.android.robospice.utils.CharEncoding;
+import com.octo.android.robospice.utils.IOUtils;
 
 import roboguice.util.temp.Ln;
-
-import com.octo.android.robospice.request.SpiceRequest;
 
 public class SimpleTextRequest extends SpiceRequest<String> {
 

@@ -35,6 +35,7 @@ android {
 
 dependencies {
     compile project(':robospice-core')
+
     compile('org.springframework.android:spring-android-rest-template:1.0.1.RELEASE') {
         exclude(module: 'spring-android-core')
     }

@@ -4,16 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.CharEncoding;
-
-import roboguice.util.temp.Ln;
 import android.app.Application;
 
 import com.octo.android.robospice.persistence.exception.CacheCreationException;
 import com.octo.android.robospice.persistence.exception.CacheLoadingException;
 import com.octo.android.robospice.persistence.exception.CacheSavingException;
 import com.octo.android.robospice.persistence.file.InFileObjectPersister;
+import com.octo.android.robospice.utils.CharEncoding;
+import com.octo.android.robospice.utils.FileUtils;
+
+import roboguice.util.temp.Ln;
 
 public class InFileStringObjectPersister extends InFileObjectPersister<String> {
 

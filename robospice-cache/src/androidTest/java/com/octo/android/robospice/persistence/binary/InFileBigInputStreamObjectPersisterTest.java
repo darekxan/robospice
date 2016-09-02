@@ -8,13 +8,12 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Arrays;
 
-import org.apache.commons.io.IOUtils;
-
 import android.app.Application;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 
 import com.octo.android.robospice.persistence.DurationInMillis;
+import com.octo.android.robospice.utils.IOUtils;
 
 @MediumTest
 public class InFileBigInputStreamObjectPersisterTest extends AndroidTestCase {

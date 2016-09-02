@@ -1,13 +1,5 @@
 package com.octo.android.robospice.request.simple;
 
-import com.octo.android.robospice.request.ProgressByteProcessor;
-import com.octo.android.robospice.request.SpiceRequest;
-
-import org.apache.commons.io.IOUtils;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +8,13 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.octo.android.robospice.request.ProgressByteProcessor;
+import com.octo.android.robospice.request.SpiceRequest;
+import com.octo.android.robospice.utils.IOUtils;
 
 import roboguice.util.temp.Ln;
 
