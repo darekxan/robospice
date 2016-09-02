@@ -1,12 +1,11 @@
 Release notes for RoboSpice
 ===========================
 
-Version 1.5.0 (planned)
+Version 1.5.3 (September 3 2016)
 -------------
 
-* TODO : finish migrating samples to gradle and release.
-* TODO : inject requests in listeners
-* TODO : inject service in requests
+* robospice - get rid of apache dependency, moved project to gradle, fixed Notification's setLatestEventInfo
+* robospice-retrofit - get rid of jackson dependency, updated retrofit to 1.9.0
 
 Version 1.4.14 (September 6 2014)
 -------------
