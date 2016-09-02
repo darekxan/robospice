@@ -1,7 +1,7 @@
 Release notes for RoboSpice
 ===========================
 
-Version 1.5.3 (September 3 2016)
+Version 1.5.4 (September 3 2016)
 -------------
 
 * robospice - get rid of apache dependency, moved project to gradle, fixed Notification's setLatestEventInfo
