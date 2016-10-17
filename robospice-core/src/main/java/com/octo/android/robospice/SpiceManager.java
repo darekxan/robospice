@@ -278,6 +278,7 @@ public class SpiceManager implements Runnable {
     void sendRequestToService(final CachedSpiceRequest<?> spiceRequest) {
         lockSendRequestsToService.lock();
         try {
+            SpiceService spiceService = this.spiceService;
             if (spiceRequest != null && spiceService != null) {
                 if (isStopped) {
                     Ln.d("Sending request to service without listeners : " + spiceRequest.getClass().getSimpleName());
