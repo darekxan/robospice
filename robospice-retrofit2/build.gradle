@@ -9,7 +9,7 @@ android {
     }
 
     compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '25'
 
     defaultConfig {
         minSdkVersion 15
@@ -21,11 +21,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            zipAlignEnabled true
-            shrinkResources true
-            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
-            proguardFile 'proguard.pro'
+            minifyEnabled false
         }
         debug {}
     }
